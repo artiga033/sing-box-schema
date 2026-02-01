@@ -1,0 +1,39 @@
+{
+    "allOf": [
+        {
+            "properties": {
+                "type": {
+                    "const": "tor"
+                },
+                "tag": {
+                    "type": "string",
+                    "description": "The tag of the outbound."
+                },
+                "executable_path": {
+                    "type": "string",
+                    "description": "The path to the Tor executable.\n\nEmbedded Tor will be ignored if set."
+                },
+                "extra_args": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of extra arguments passed to the Tor instance when started."
+                },
+                "data_directory": {
+                    "type": "string",
+                    "description": "The data directory of Tor.\n\nEach start will be very slow if not specified."
+                },
+                "torrc": {
+                    "type": "object",
+                    "additionalProperties": true,
+                    "description": "Map of torrc options."
+                }
+            },
+            "required": ["type"]
+        },
+        {
+            "$ref": "../shared/dial.schema.json"
+        }
+    ]
+}

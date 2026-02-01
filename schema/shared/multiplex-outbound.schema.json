@@ -1,0 +1,33 @@
+{
+    "type": "object",
+    "properties": {
+        "enabled": {
+            "type": "boolean",
+            "description": "Enable multiplex."
+        },
+        "protocol": {
+            "type": "string",
+            "enum": ["smux", "yamux", "h2mux"],
+            "description": "Multiplex protocol.\n\n- smux: https://github.com/xtaci/smux\n- yamux: https://github.com/hashicorp/yamux\n- h2mux: https://golang.org/x/net/http2\n\nh2mux is used by default."
+        },
+        "max_connections": {
+            "type": "integer",
+            "description": "Maximum connections.\n\nConflict with `max_streams`."
+        },
+        "min_streams": {
+            "type": "integer",
+            "description": "Minimum multiplexed streams in a connection before opening a new connection.\n\nConflict with `max_streams`."
+        },
+        "max_streams": {
+            "type": "integer",
+            "description": "Maximum multiplexed streams in a connection before opening a new connection.\n\nConflict with `max_connections` and `min_streams`."
+        },
+        "padding": {
+            "type": "boolean",
+            "description": "Enable padding.\n\nRequires sing-box server version 1.3-beta9 or later."
+        },
+        "brutal": {
+            "$ref": "./tcp-brutal.schema.json"
+        }
+    }
+}

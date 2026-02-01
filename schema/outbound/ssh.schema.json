@@ -1,0 +1,62 @@
+{
+    "allOf": [
+        {
+            "properties": {
+                "type": {
+                    "const": "ssh"
+                },
+                "tag": {
+                    "type": "string",
+                    "description": "The tag of the outbound."
+                },
+                "server": {
+                    "type": "string",
+                    "description": "Server address."
+                },
+                "server_port": {
+                    "type": "integer",
+                    "description": "Server port.\n\n22 will be used if empty."
+                },
+                "user": {
+                    "type": "string",
+                    "description": "SSH user.\n\nroot will be used if empty."
+                },
+                "password": {
+                    "type": "string",
+                    "description": "Password."
+                },
+                "private_key": {
+                    "type": "string",
+                    "description": "Private key."
+                },
+                "private_key_path": {
+                    "type": "string",
+                    "description": "Private key path."
+                },
+                "private_key_passphrase": {
+                    "type": "string",
+                    "description": "Private key passphrase."
+                },
+                "host_key": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "Host key.\n\nAccept any if empty."
+                },
+                "host_key_algorithms": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Host key algorithms."
+                },
+                "client_version": {
+                    "type": "string",
+                    "description": "Client version.\n\nRandom version will be used if empty."
+                }
+            },
+            "required": ["type", "server"]
+        },
+        {
+            "$ref": "../shared/dial.schema.json"
+        }
+    ]
+}

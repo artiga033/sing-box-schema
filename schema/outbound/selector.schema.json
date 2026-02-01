@@ -1,0 +1,27 @@
+{
+    "properties": {
+        "type": {
+            "const": "selector"
+        },
+        "tag": {
+            "type": "string",
+            "description": "The tag of the outbound."
+        },
+        "outbounds": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "List of outbound tags to select."
+        },
+        "default": {
+            "type": "string",
+            "description": "The default outbound tag. The first outbound will be used if empty."
+        },
+        "interrupt_exist_connections": {
+            "type": "boolean",
+            "description": "Interrupt existing connections when the selected outbound has changed."
+        }
+    },
+    "required": ["type", "outbounds"]
+}

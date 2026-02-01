@@ -1,0 +1,18 @@
+{
+    "properties": {
+        "type": {
+            "type": "string",
+            "const": "fakeip"
+        },
+        "inet4_range": {
+            "type": "string",
+            "default": "198.18.0.0/15",
+            "description": "IPv4 address range for FakeIP."
+        },
+        "inet6_range": {
+            "type": "string",
+            "default": "fc00::/18",
+            "description": "IPv6 address range for FakeIP."
+        }
+    }
+}

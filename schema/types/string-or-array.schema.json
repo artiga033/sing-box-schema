@@ -1,0 +1,14 @@
+{
+    "$comment": "singbox allows using single string for array types if there is only one element.\n\nThis type is to allow the behavior.",
+    "oneOf": [
+        {
+            "type": "string"
+        },
+        {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    ]
+}

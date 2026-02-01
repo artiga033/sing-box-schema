@@ -1,0 +1,13 @@
+{
+    "properties": {
+        "type": {
+            "const": "dns"
+        },
+        "tag": {
+            "type": "string",
+            "description": "The tag of the outbound."
+        }
+    },
+    "deprecated": true,
+    "required": ["type"]
+}

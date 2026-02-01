@@ -1,0 +1,96 @@
+{
+    "allOf": [
+        {
+            "properties": {
+                "type": {
+                    "const": "shadowtls"
+                },
+                "tag": {
+                    "type": "string",
+                    "description": "The tag of the inbound."
+                },
+                "version": {
+                    "type": "integer",
+                    "enum": [1, 2, 3],
+                    "description": "ShadowTLS protocol version.\n\n1 is used by default."
+                },
+                "password": {
+                    "type": "string",
+                    "description": "ShadowTLS password.\n\nOnly available in the ShadowTLS protocol 2."
+                },
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "password": {
+                                "type": "string"
+                            }
+                        },
+                        "required": ["password"]
+                    },
+                    "description": "ShadowTLS users.\n\nOnly available in the ShadowTLS protocol 3."
+                },
+                "handshake": {
+                    "type": "object",
+                    "allOf": [
+                        {
+                            "properties": {
+                                "server": {
+                                    "type": "string",
+                                    "description": "Handshake server address."
+                                },
+                                "server_port": {
+                                    "type": "integer",
+                                    "description": "Handshake server port."
+                                }
+                            }
+                        },
+                        {
+                            "$ref": "../shared/dial.schema.json"
+                        }
+                    ],
+                    "description": "Handshake server address and Dial Fields."
+                },
+                "handshake_for_server_name": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "object",
+                        "allOf": [
+                            {
+                                "properties": {
+                                    "server": {
+                                        "type": "string"
+                                    },
+                                    "server_port": {
+                                        "type": "integer"
+                                    }
+                                }
+                            },
+                            {
+                                "$ref": "../shared/dial.schema.json"
+                            }
+                        ]
+                    },
+                    "description": "Handshake server address for specific server name.\n\nOnly available in the ShadowTLS protocol 2/3."
+                },
+                "strict_mode": {
+                    "type": "boolean",
+                    "description": "ShadowTLS strict mode.\n\nOnly available in the ShadowTLS protocol 3."
+                },
+                "wildcard_sni": {
+                    "type": "string",
+                    "enum": ["off", "authed", "all"],
+                    "description": "🆕 Since sing-box 1.12.0\n\nShadowTLS wildcard SNI mode.\n\nOnly available in the ShadowTLS protocol 3."
+                }
+            },
+            "required": ["type"]
+        },
+        {
+            "$ref": "../shared/listen.schema.json"
+        }
+    ]
+}

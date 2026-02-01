@@ -1,0 +1,63 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "allOf": [
+        {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "The type of the outbound.",
+                    "enum": [
+                        "direct",
+                        "block",
+                        "socks",
+                        "http",
+                        "shadowsocks",
+                        "vmess",
+                        "trojan",
+                        "wireguard",
+                        "hysteria",
+                        "vless",
+                        "shadowtls",
+                        "tuic",
+                        "hysteria2",
+                        "anytls",
+                        "tor",
+                        "ssh",
+                        "dns",
+                        "selector",
+                        "urltest"
+                    ]
+                },
+                "tag": {
+                    "type": "string",
+                    "description": "The tag of the outbound."
+                }
+            },
+            "required": ["type"]
+        },
+        {
+            "oneOf": [
+                { "$ref": "./outbound/direct.schema.json" },
+                { "$ref": "./outbound/block.schema.json" },
+                { "$ref": "./outbound/socks.schema.json" },
+                { "$ref": "./outbound/http.schema.json" },
+                { "$ref": "./outbound/shadowsocks.schema.json" },
+                { "$ref": "./outbound/vmess.schema.json" },
+                { "$ref": "./outbound/trojan.schema.json" },
+                { "$ref": "./outbound/wireguard.schema.json" },
+                { "$ref": "./outbound/hysteria.schema.json" },
+                { "$ref": "./outbound/vless.schema.json" },
+                { "$ref": "./outbound/shadowtls.schema.json" },
+                { "$ref": "./outbound/tuic.schema.json" },
+                { "$ref": "./outbound/hysteria2.schema.json" },
+                { "$ref": "./outbound/anytls.schema.json" },
+                { "$ref": "./outbound/tor.schema.json" },
+                { "$ref": "./outbound/ssh.schema.json" },
+                { "$ref": "./outbound/dns.schema.json" },
+                { "$ref": "./outbound/selector.schema.json" },
+                { "$ref": "./outbound/urltest.schema.json" }
+            ]
+        }
+    ]
+}

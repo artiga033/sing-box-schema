@@ -1,0 +1,70 @@
+{
+    "type": "object",
+    "allOf": [
+        {
+            "properties": {
+                "type": {
+                    "const": "tailscale"
+                },
+                "tag": {
+                    "type": "string",
+                    "description": "The tag of the endpoint."
+                },
+                "state_directory": {
+                    "type": "string",
+                    "default": "tailscale",
+                    "description": "The directory where the Tailscale state is stored.\n\n`tailscale` is used by default."
+                },
+                "auth_key": {
+                    "type": "string",
+                    "description": "The auth key to create the node. If the node is already created (from state previously stored), then this field is not used."
+                },
+                "control_url": {
+                    "type": "string",
+                    "default": "https://controlplane.tailscale.com",
+                    "description": "The coordination server URL.\n\n`https://controlplane.tailscale.com` is used by default."
+                },
+                "ephemeral": {
+                    "type": "boolean",
+                    "description": "Indicates whether the instance should register as an Ephemeral node."
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The hostname of the node.\n\nSystem hostname is used by default."
+                },
+                "accept_routes": {
+                    "type": "boolean",
+                    "description": "Indicates whether the node should accept routes advertised by other nodes."
+                },
+                "exit_node": {
+                    "type": "string",
+                    "description": "The exit node name or IP address to use."
+                },
+                "exit_node_allow_lan_access": {
+                    "type": "boolean",
+                    "description": "Indicates whether locally accessible subnets should be routed directly or via the exit node."
+                },
+                "advertise_routes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "CIDR prefixes to advertise into the Tailscale network as reachable through the current node."
+                },
+                "advertise_exit_node": {
+                    "type": "boolean",
+                    "description": "Indicates whether the node should advertise itself as an exit node."
+                },
+                "udp_timeout": {
+                    "type": "string",
+                    "default": "5m",
+                    "description": "UDP NAT expiration time.\n\n`5m` will be used by default."
+                }
+            },
+            "required": ["type"]
+        },
+        {
+            "$ref": "../shared/dial.schema.json"
+        }
+    ]
+}

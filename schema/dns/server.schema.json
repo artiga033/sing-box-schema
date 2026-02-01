@@ -1,0 +1,79 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "allOf": [
+        {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "The type of the DNS server.",
+                    "enum": [
+                        "",
+                        "local",
+                        "hosts",
+                        "tcp",
+                        "udp",
+                        "tls",
+                        "quic",
+                        "https",
+                        "h3",
+                        "dhcp",
+                        "fakeip",
+                        "tailscale",
+                        "resolved"
+                    ]
+                },
+                "tag": {
+                    "type": "string",
+                    "description": "The tag of the DNS server."
+                }
+            },
+            "required": [
+                "type"
+            ]
+        },
+        {
+            "oneOf": [
+                {
+                    "$ref": "./server/legacy.schema.json"
+                },
+                {
+                    "$ref": "./server/local.schema.json"
+                },
+                {
+                    "$ref": "./server/hosts.schema.json"
+                },
+                {
+                    "$ref": "./server/tcp.schema.json"
+                },
+                {
+                    "$ref": "./server/udp.schema.json"
+                },
+                {
+                    "$ref": "./server/tls.schema.json"
+                },
+                {
+                    "$ref": "./server/quic.schema.json"
+                },
+                {
+                    "$ref": "./server/https.schema.json"
+                },
+                {
+                    "$ref": "./server/h3.schema.json"
+                },
+                {
+                    "$ref": "./server/dhcp.schema.json"
+                },
+                {
+                    "$ref": "./server/fakeip.schema.json"
+                },
+                {
+                    "$ref": "./server/tailscale.schema.json"
+                },
+                {
+                    "$ref": "./server/resolved.schema.json"
+                }
+            ]
+        }
+    ]
+}

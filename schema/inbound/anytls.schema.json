@@ -1,0 +1,45 @@
+{
+    "allOf": [
+        {
+            "properties": {
+                "type": {
+                    "const": "anytls"
+                },
+                "tag": {
+                    "type": "string",
+                    "description": "The tag of the inbound."
+                },
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "password": {
+                                "type": "string"
+                            }
+                        },
+                        "required": ["password"]
+                    },
+                    "description": "AnyTLS users."
+                },
+                "padding_scheme": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "AnyTLS padding scheme line array."
+                },
+                "tls": {
+                    "$ref": "../shared/tls-inbound.schema.json"
+                }
+            },
+            "required": ["type", "users"]
+        },
+        {
+            "$ref": "../shared/listen.schema.json"
+        }
+    ]
+}

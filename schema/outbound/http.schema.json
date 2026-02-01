@@ -1,0 +1,49 @@
+{
+    "allOf": [
+        {
+            "properties": {
+                "type": {
+                    "const": "http"
+                },
+                "tag": {
+                    "type": "string",
+                    "description": "The tag of the outbound."
+                },
+                "server": {
+                    "type": "string",
+                    "description": "The server address."
+                },
+                "server_port": {
+                    "type": "integer",
+                    "description": "The server port."
+                },
+                "username": {
+                    "type": "string",
+                    "description": "Basic authorization username."
+                },
+                "password": {
+                    "type": "string",
+                    "description": "Basic authorization password."
+                },
+                "path": {
+                    "type": "string",
+                    "description": "Path of HTTP request."
+                },
+                "headers": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "../types/string-or-array.schema.json"
+                    },
+                    "description": "Extra headers of HTTP request."
+                },
+                "tls": {
+                    "$ref": "../shared/tls-outbound.schema.json"
+                }
+            },
+            "required": ["type", "server", "server_port"]
+        },
+        {
+            "$ref": "../shared/dial.schema.json"
+        }
+    ]
+}

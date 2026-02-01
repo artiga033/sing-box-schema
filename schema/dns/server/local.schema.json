@@ -1,0 +1,15 @@
+{
+    "allOf": [
+        {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "const": "local"
+                }
+            }
+        },
+        {
+            "$ref": "../../shared/dial.schema.json"
+        }
+    ]
+}

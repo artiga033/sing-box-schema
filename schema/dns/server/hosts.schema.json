@@ -1,0 +1,17 @@
+{
+    "type": "object",
+    "properties": {
+        "type": {
+            "type": "string",
+            "const": "hosts"
+        },
+        "path": {
+            "$ref": "../../types/string-or-array.schema.json",
+            "description": "List of paths to hosts files.\n\n`/etc/hosts` is used by default.\n\n`C:\\Windows\\System32\\Drivers\\etc\\hosts` is used by default on Windows."
+        },
+        "predefined": {
+            "$ref": "../../types/string-or-array.schema.json",
+            "description": "Predefined hosts."
+        }
+    }
+}

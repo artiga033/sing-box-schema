@@ -1,0 +1,43 @@
+{
+    "allOf": [
+        {
+            "properties": {
+                "type": {
+                    "const": "naive"
+                },
+                "tag": {
+                    "type": "string",
+                    "description": "The tag of the inbound."
+                },
+                "network": {
+                    "type": "string",
+                    "enum": ["tcp", "udp"],
+                    "description": "Listen network, one of `tcp` `udp`.\n\nBoth if empty."
+                },
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "username": {
+                                "type": "string"
+                            },
+                            "password": {
+                                "type": "string"
+                            }
+                        },
+                        "required": ["username", "password"]
+                    },
+                    "description": "Naive users."
+                },
+                "tls": {
+                    "$ref": "../shared/tls-inbound.schema.json"
+                }
+            },
+            "required": ["type", "users"]
+        },
+        {
+            "$ref": "../shared/listen.schema.json"
+        }
+    ]
+}

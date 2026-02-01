@@ -1,0 +1,33 @@
+{
+    "allOf": [
+        {
+            "properties": {
+                "type": {
+                    "const": "ssm-api"
+                },
+                "tag": {
+                    "type": "string",
+                    "description": "The tag of the service."
+                },
+                "servers": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A mapping Object from HTTP endpoints to Shadowsocks Inbound tags."
+                },
+                "cache_path": {
+                    "type": "string",
+                    "description": "If set, traffic and user state will be saved to the specified JSON file."
+                },
+                "tls": {
+                    "$ref": "../shared/tls-inbound.schema.json"
+                }
+            },
+            "required": ["type", "servers"]
+        },
+        {
+            "$ref": "../shared/listen.schema.json"
+        }
+    ]
+}

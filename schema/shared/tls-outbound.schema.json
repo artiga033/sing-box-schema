@@ -1,0 +1,139 @@
+{
+    "type": "object",
+    "properties": {
+        "enabled": {
+            "type": "boolean",
+            "description": "Enable TLS."
+        },
+        "disable_sni": {
+            "type": "boolean",
+            "description": "Do not send server name in ClientHello."
+        },
+        "server_name": {
+            "type": "string",
+            "description": "Used to verify the hostname on the returned certificates unless insecure is given.\n\nIt is also included in the client's handshake to support virtual hosting unless it is an IP address."
+        },
+        "insecure": {
+            "type": "boolean",
+            "description": "Accepts any server certificate."
+        },
+        "alpn": {
+            "$ref": "../types/string-or-array.schema.json",
+            "description": "List of supported application level protocols, in order of preference."
+        },
+        "min_version": {
+            "type": "string",
+            "enum": ["1.0", "1.1", "1.2", "1.3"],
+            "description": "The minimum TLS version that is acceptable.\n\nBy default, TLS 1.2 is used when acting as a client."
+        },
+        "max_version": {
+            "type": "string",
+            "enum": ["1.0", "1.1", "1.2", "1.3"],
+            "description": "The maximum TLS version that is acceptable.\n\nBy default, the maximum version is currently TLS 1.3."
+        },
+        "cipher_suites": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "TLS_RSA_WITH_AES_128_CBC_SHA",
+                    "TLS_RSA_WITH_AES_256_CBC_SHA",
+                    "TLS_RSA_WITH_AES_128_GCM_SHA256",
+                    "TLS_RSA_WITH_AES_256_GCM_SHA384",
+                    "TLS_AES_128_GCM_SHA256",
+                    "TLS_AES_256_GCM_SHA384",
+                    "TLS_CHACHA20_POLY1305_SHA256",
+                    "TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA",
+                    "TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA",
+                    "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA",
+                    "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA",
+                    "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256",
+                    "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
+                    "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+                    "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+                    "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256",
+                    "TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256"
+                ]
+            },
+            "description": "A list of enabled TLS 1.0–1.2 cipher suites. The order of the list is ignored. Note that TLS 1.3 cipher suites are not configurable."
+        },
+        "certificate": {
+            "$ref": "../types/string-or-array.schema.json",
+            "description": "The server certificate line array, in PEM format."
+        },
+        "certificate_path": {
+            "type": "string",
+            "description": "The path to the server certificate, in PEM format.\n\nWill be automatically reloaded if file modified."
+        },
+        "fragment": {
+            "type": "boolean",
+            "description": "🆕 Since sing-box 1.12.0\n\nFragment TLS handshakes to bypass firewalls."
+        },
+        "fragment_fallback_delay": {
+            "type": "string",
+            "description": "🆕 Since sing-box 1.12.0\n\nThe fallback value used when TLS segmentation cannot automatically determine the wait time.\n\n`500ms` is used by default."
+        },
+        "record_fragment": {
+            "type": "boolean",
+            "description": "🆕 Since sing-box 1.12.0\n\nFragment TLS handshake into multiple TLS records to bypass firewalls."
+        },
+        "ech": {
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable ECH."
+                },
+                "config": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "ECH configuration line array, in PEM format.\n\nIf empty, load from DNS will be attempted."
+                },
+                "config_path": {
+                    "type": "string",
+                    "description": "The path to ECH configuration, in PEM format.\n\nIf empty, load from DNS will be attempted."
+                },
+                "pq_signature_schemes_enabled": {
+                    "type": "boolean",
+                    "deprecated": true,
+                    "description": "Deprecated in sing-box 1.12.0."
+                },
+                "dynamic_record_sizing_disabled": {
+                    "type": "boolean",
+                    "deprecated": true,
+                    "description": "Deprecated in sing-box 1.12.0."
+                }
+            }
+        },
+        "utls": {
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable uTLS."
+                },
+                "fingerprint": {
+                    "type": "string",
+                    "enum": ["chrome", "firefox", "edge", "safari", "360", "qq", "ios", "android", "random", "randomized"],
+                    "description": "uTLS fingerprint.\n\nChrome fingerprint will be used if empty."
+                }
+            }
+        },
+        "reality": {
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable REALITY."
+                },
+                "public_key": {
+                    "type": "string",
+                    "description": "Public key, generated by `sing-box generate reality-keypair`."
+                },
+                "short_id": {
+                    "type": "string",
+                    "description": "A hexadecimal string with zero to eight digits."
+                }
+            }
+        }
+    }
+}

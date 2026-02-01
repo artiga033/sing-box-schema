@@ -1,0 +1,72 @@
+{
+    "type": "object",
+    "properties": {
+        "rules": {
+            "type": "array",
+            "items": {
+                "$ref": "./route/rule.schema.json"
+            },
+            "description": "List of Route Rule."
+        },
+        "rule_set": {
+            "type": "array",
+            "items": {
+                "$ref": "./rule-set.schema.json"
+            },
+            "description": "🆕 Since sing-box 1.8.0\n\nList of rule-set."
+        },
+        "final": {
+            "type": "string",
+            "description": "Default outbound tag. The first outbound will be used if empty."
+        },
+        "auto_detect_interface": {
+            "type": "boolean",
+            "description": "> Only supported on Linux, Windows and macOS.\n\nBind outbound connections to the default NIC by default to prevent routing loops under tun."
+        },
+        "override_android_vpn": {
+            "type": "boolean",
+            "description": "> Only supported on Android.\n\nAccept Android VPN as upstream NIC when `auto_detect_interface` enabled."
+        },
+        "default_interface": {
+            "type": "string",
+            "description": "> Only supported on Linux, Windows and macOS.\n\nBind outbound connections to the specified NIC by default."
+        },
+        "default_mark": {
+            "type": "integer",
+            "description": "> Only supported on Linux.\n\nSet routing mark by default."
+        },
+        "default_domain_resolver": {
+            "oneOf": [
+                { "type": "string" },
+                { "type": "object" }
+            ],
+            "description": "🆕 Since sing-box 1.12.0\n\nDefault domain resolver."
+        },
+        "default_network_strategy": {
+            "type": "string",
+            "description": "🆕 Since sing-box 1.11.0\n\nDefault network strategy."
+        },
+        "default_network_type": {
+            "$ref": "./types/string-or-array.schema.json",
+            "description": "🆕 Since sing-box 1.11.0\n\nDefault network types."
+        },
+        "default_fallback_network_type": {
+            "$ref": "./types/string-or-array.schema.json",
+            "description": "🆕 Since sing-box 1.11.0\n\nDefault fallback network types."
+        },
+        "default_fallback_delay": {
+            "type": "string",
+            "description": "🆕 Since sing-box 1.11.0\n\nDefault fallback delay."
+        },
+        "geoip": {
+            "type": "object",
+            "deprecated": true,
+            "description": "Removed in sing-box 1.12.0."
+        },
+        "geosite": {
+            "type": "object",
+            "deprecated": true,
+            "description": "Removed in sing-box 1.12.0."
+        }
+    }
+}

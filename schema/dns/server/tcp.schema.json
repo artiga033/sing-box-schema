@@ -1,0 +1,25 @@
+{
+    "allOf": [
+        {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "const": "tcp"
+                },
+                "server": {
+                    "type": "string",
+                    "description": "The address of the DNS server.\n\nIf domain name is used, `domain_resolver` must also be set to resolve IP address."
+                },
+                "server_port": {
+                    "type": "integer",
+                    "default": 53,
+                    "description": "The port of the DNS server.\n\n`53` will be used by default."
+                }
+            },
+            "required": ["server"]
+        },
+        {
+            "$ref": "../../shared/dial.schema.json"
+        }
+    ]
+}

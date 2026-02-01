@@ -1,0 +1,105 @@
+{
+    "allOf": [
+        {
+            "properties": {
+                "type": {
+                    "const": "derp"
+                },
+                "tag": {
+                    "type": "string",
+                    "description": "The tag of the service."
+                },
+                "tls": {
+                    "$ref": "../shared/tls-inbound.schema.json"
+                },
+                "config_path": {
+                    "type": "string",
+                    "description": "Derper configuration file path."
+                },
+                "verify_client_endpoint": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tailscale endpoints tags to verify clients."
+                },
+                "verify_client_url": {
+                    "type": "array",
+                    "items": {
+                        "oneOf": [
+                            { "type": "string" },
+                            {
+                                "type": "object",
+                                "properties": {
+                                    "url": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": ["url"]
+                            }
+                        ]
+                    },
+                    "description": "URL to verify clients."
+                },
+                "home": {
+                    "type": "string",
+                    "description": "What to serve at the root path."
+                },
+                "mesh_with": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "server": {
+                                "type": "string"
+                            },
+                            "server_port": {
+                                "type": "integer"
+                            },
+                            "host": {
+                                "type": "string"
+                            },
+                            "tls": {
+                                "$ref": "../shared/tls-outbound.schema.json"
+                            }
+                        },
+                        "required": ["server", "server_port"]
+                    },
+                    "description": "Mesh with other DERP servers."
+                },
+                "mesh_psk": {
+                    "type": "string",
+                    "description": "Pre-shared key for DERP mesh."
+                },
+                "mesh_psk_file": {
+                    "type": "string",
+                    "description": "Pre-shared key file for DERP mesh."
+                },
+                "stun": {
+                    "oneOf": [
+                        { "type": "integer" },
+                        {
+                            "type": "object",
+                            "properties": {
+                                "enabled": {
+                                    "type": "boolean"
+                                },
+                                "listen": {
+                                    "type": "string"
+                                },
+                                "listen_port": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    ],
+                    "description": "STUN server listen options."
+                }
+            },
+            "required": ["type", "config_path"]
+        },
+        {
+            "$ref": "../shared/listen.schema.json"
+        }
+    ]
+}

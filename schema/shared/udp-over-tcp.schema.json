@@ -1,0 +1,22 @@
+{
+    "$comment": "The structure can be replaced with a boolean value when the version is not specified.",
+    "oneOf": [
+        {
+            "type": "boolean"
+        },
+        {
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable the UDP over TCP protocol."
+                },
+                "version": {
+                    "type": "integer",
+                    "enum": [1, 2],
+                    "description": "The protocol version, `1` or `2`.\n\n2 is used by default."
+                }
+            }
+        }
+    ]
+}

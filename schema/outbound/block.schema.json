@@ -1,0 +1,12 @@
+{
+    "properties": {
+        "type": {
+            "const": "block"
+        },
+        "tag": {
+            "type": "string",
+            "description": "The tag of the outbound."
+        }
+    },
+    "required": ["type"]
+}

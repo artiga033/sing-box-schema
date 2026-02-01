@@ -1,0 +1,122 @@
+{
+    "type": "object",
+    "oneOf": [
+        {
+            "properties": {
+                "type": {
+                    "const": "http"
+                },
+                "host": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "List of host domain.\n\nThe client will choose randomly and the server will verify if not empty."
+                },
+                "path": {
+                    "type": "string",
+                    "description": "Path of HTTP request.\n\nThe server will verify."
+                },
+                "method": {
+                    "type": "string",
+                    "description": "Method of HTTP request.\n\nThe server will verify if not empty."
+                },
+                "headers": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "../types/string-or-array.schema.json"
+                    },
+                    "description": "Extra headers of HTTP request.\n\nThe server will write in response if not empty."
+                },
+                "idle_timeout": {
+                    "type": "string",
+                    "description": "Idle timeout duration.\n\nZero is used by default."
+                },
+                "ping_timeout": {
+                    "type": "string",
+                    "description": "Ping timeout duration.\n\nThe default timeout duration is 15 seconds."
+                }
+            },
+            "required": ["type"]
+        },
+        {
+            "properties": {
+                "type": {
+                    "const": "ws"
+                },
+                "path": {
+                    "type": "string",
+                    "description": "Path of HTTP request.\n\nThe server will verify."
+                },
+                "headers": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "../types/string-or-array.schema.json"
+                    },
+                    "description": "Extra headers of HTTP request.\n\nThe server will write in response if not empty."
+                },
+                "max_early_data": {
+                    "type": "integer",
+                    "description": "Allowed payload size is in the request. Enabled if not zero."
+                },
+                "early_data_header_name": {
+                    "type": "string",
+                    "description": "Early data is sent in path instead of header by default.\n\nTo be compatible with Xray-core, set this to `Sec-WebSocket-Protocol`."
+                }
+            },
+            "required": ["type"]
+        },
+        {
+            "properties": {
+                "type": {
+                    "const": "quic"
+                }
+            },
+            "required": ["type"]
+        },
+        {
+            "properties": {
+                "type": {
+                    "const": "grpc"
+                },
+                "service_name": {
+                    "type": "string",
+                    "description": "Service name of gRPC."
+                },
+                "idle_timeout": {
+                    "type": "string",
+                    "description": "Idle timeout duration."
+                },
+                "ping_timeout": {
+                    "type": "string",
+                    "description": "Ping timeout duration."
+                },
+                "permit_without_stream": {
+                    "type": "boolean",
+                    "description": "If enabled, the client transport sends keepalive pings even with no active connections.\n\nDisabled by default."
+                }
+            },
+            "required": ["type"]
+        },
+        {
+            "properties": {
+                "type": {
+                    "const": "httpupgrade"
+                },
+                "host": {
+                    "type": "string",
+                    "description": "Host domain.\n\nThe server will verify if not empty."
+                },
+                "path": {
+                    "type": "string",
+                    "description": "Path of HTTP request.\n\nThe server will verify."
+                },
+                "headers": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "../types/string-or-array.schema.json"
+                    },
+                    "description": "Extra headers of HTTP request.\n\nThe server will write in response if not empty."
+                }
+            },
+            "required": ["type"]
+        }
+    ]
+}

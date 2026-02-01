@@ -1,0 +1,297 @@
+{
+    "$defs": {
+        "defaultRouteRule": {
+            "type": "object",
+            "properties": {
+                "inbound": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "Tags of Inbound."
+                },
+                "ip_version": {
+                    "type": "integer",
+                    "enum": [
+                        4,
+                        6
+                    ],
+                    "description": "4 or 6.\n\nNot limited if empty."
+                },
+                "network": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "`tcp` or `udp`."
+                },
+                "auth_user": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "Username, see each inbound for details."
+                },
+                "protocol": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "Sniffed protocol."
+                },
+                "client": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "🆕 Since sing-box 1.10.0\n\nSniffed client type."
+                },
+                "domain": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "Match full domain."
+                },
+                "domain_suffix": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "Match domain suffix."
+                },
+                "domain_keyword": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "Match domain using keyword."
+                },
+                "domain_regex": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "Match domain using regular expression."
+                },
+                "geosite": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "deprecated": true,
+                    "description": "Match geosite.\n\nDeprecated in sing-box 1.8.0."
+                },
+                "source_geoip": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "deprecated": true,
+                    "description": "Match source geoip.\n\nDeprecated in sing-box 1.8.0."
+                },
+                "geoip": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "deprecated": true,
+                    "description": "Match geoip.\n\nDeprecated in sing-box 1.8.0."
+                },
+                "source_ip_cidr": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "Match source IP CIDR."
+                },
+                "source_ip_is_private": {
+                    "type": "boolean",
+                    "description": "🆕 Since sing-box 1.8.0\n\nMatch non-public source IP."
+                },
+                "ip_cidr": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "Match IP CIDR."
+                },
+                "ip_is_private": {
+                    "type": "boolean",
+                    "description": "🆕 Since sing-box 1.8.0\n\nMatch non-public IP."
+                },
+                "source_port": {
+                    "oneOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        }
+                    ],
+                    "description": "Match source port."
+                },
+                "source_port_range": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "Match source port range."
+                },
+                "port": {
+                    "oneOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        }
+                    ],
+                    "description": "Match port."
+                },
+                "port_range": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "Match port range."
+                },
+                "process_name": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "> Only supported on Linux, Windows, and macOS.\n\nMatch process name."
+                },
+                "process_path": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "> Only supported on Linux, Windows, and macOS.\n\nMatch process path."
+                },
+                "process_path_regex": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "🆕 Since sing-box 1.10.0\n\n> Only supported on Linux, Windows, and macOS.\n\nMatch process path using regular expression."
+                },
+                "package_name": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "Match android package name."
+                },
+                "user": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "> Only supported on Linux.\n\nMatch user name."
+                },
+                "user_id": {
+                    "oneOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        }
+                    ],
+                    "description": "> Only supported on Linux.\n\nMatch user id."
+                },
+                "clash_mode": {
+                    "type": "string",
+                    "description": "Match Clash mode."
+                },
+                "network_type": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "🆕 Since sing-box 1.11.0\n\n> Only supported in graphical clients on Android and Apple platforms.\n\nMatch network type."
+                },
+                "network_is_expensive": {
+                    "type": "boolean",
+                    "description": "🆕 Since sing-box 1.11.0\n\nMatch if network is considered expensive."
+                },
+                "network_is_constrained": {
+                    "type": "boolean",
+                    "description": "🆕 Since sing-box 1.11.0\n\nMatch if network is in Low Data Mode."
+                },
+                "wifi_ssid": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "Match WiFi SSID."
+                },
+                "wifi_bssid": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "Match WiFi BSSID."
+                },
+                "rule_set": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "🆕 Since sing-box 1.8.0\n\nMatch rule-set."
+                },
+                "rule_set_ipcidr_match_source": {
+                    "type": "boolean",
+                    "deprecated": true,
+                    "description": "Deprecated in sing-box 1.10.0. Use `rule_set_ip_cidr_match_source` instead."
+                },
+                "rule_set_ip_cidr_match_source": {
+                    "type": "boolean",
+                    "description": "🆕 Since sing-box 1.10.0\n\nMake `ip_cidr` in rule-sets match the source IP."
+                },
+                "invert": {
+                    "type": "boolean",
+                    "description": "Invert match result."
+                },
+                "action": {
+                    "type": "string",
+                    "enum": [
+                        "route",
+                        "route-options",
+                        "reject",
+                        "hijack-dns",
+                        "sniff",
+                        "resolve"
+                    ],
+                    "description": "See Rule Actions for details."
+                },
+                "outbound": {
+                    "type": "string"
+                }
+            },
+            "if": {
+                "required": [
+                    "action"
+                ],
+                "properties": {
+                    "action": {
+                        "not": {
+                            "const": "route"
+                        }
+                    }
+                }
+            },
+            "then": {
+                "properties": {
+                    "outbound": {
+                        "deprecated": true,
+                        "description": "Deprecated in sing-box 1.11.0. Moved to Rule Action."
+                    }
+                }
+            },
+            "allOf": [
+                {
+                    "$ref": "./rule_action.schema.json"
+                }
+            ]
+        },
+        "logicalRouteRule": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "const": "logical"
+                },
+                "mode": {
+                    "type": "string",
+                    "enum": [
+                        "and",
+                        "or"
+                    ],
+                    "description": "`and` or `or`"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/defaultRouteRule"
+                    },
+                    "description": "Included rules."
+                },
+                "invert": {
+                    "type": "boolean",
+                    "description": "Invert match result."
+                },
+                "action": {
+                    "type": "string",
+                    "enum": [
+                        "route",
+                        "route-options",
+                        "reject",
+                        "hijack-dns",
+                        "sniff",
+                        "resolve"
+                    ],
+                    "description": "See Rule Actions for details."
+                },
+                "outbound": {
+                    "type": "string",
+                    "deprecated": true,
+                    "description": "Deprecated in sing-box 1.11.0."
+                }
+            },
+            "required": [
+                "type",
+                "mode",
+                "rules"
+            ],
+            "allOf": [
+                {
+                    "$ref": "./rule_action.schema.json"
+                }
+            ]
+        }
+    },
+    "oneOf": [
+        {
+            "$ref": "#/$defs/defaultRouteRule"
+        },
+        {
+            "$ref": "#/$defs/logicalRouteRule"
+        }
+    ]
+}

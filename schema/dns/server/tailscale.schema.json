@@ -1,0 +1,17 @@
+{
+    "properties": {
+        "type": {
+            "type": "string",
+            "const": "tailscale"
+        },
+        "endpoint": {
+            "type": "string",
+            "description": "The tag of the Tailscale Endpoint."
+        },
+        "accept_default_resolvers": {
+            "type": "boolean",
+            "description": "Indicates whether default DNS resolvers should be accepted for fallback queries in addition to MagicDNS.\n\nIf not enabled, `NXDOMAIN` will be returned for non-Tailscale domain queries."
+        }
+    },
+    "required": ["endpoint"]
+}

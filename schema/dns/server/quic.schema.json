@@ -1,0 +1,29 @@
+{
+    "allOf": [
+        {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "const": "quic"
+                },
+                "server": {
+                    "type": "string",
+                    "description": "The address of the DNS server.\n\nIf domain name is used, `domain_resolver` must also be set to resolve IP address."
+                },
+                "server_port": {
+                    "type": "integer",
+                    "default": 853,
+                    "description": "The port of the DNS server.\n\n`853` will be used by default."
+                },
+                "tls": {
+                    "$ref": "../../shared/tls-outbound.schema.json",
+                    "description": "TLS configuration."
+                }
+            },
+            "required": ["server"]
+        },
+        {
+            "$ref": "../../shared/dial.schema.json"
+        }
+    ]
+}

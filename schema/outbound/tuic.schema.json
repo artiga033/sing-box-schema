@@ -1,0 +1,65 @@
+{
+    "allOf": [
+        {
+            "properties": {
+                "type": {
+                    "const": "tuic"
+                },
+                "tag": {
+                    "type": "string",
+                    "description": "The tag of the outbound."
+                },
+                "server": {
+                    "type": "string",
+                    "description": "The server address."
+                },
+                "server_port": {
+                    "type": "integer",
+                    "description": "The server port."
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "TUIC user uuid."
+                },
+                "password": {
+                    "type": "string",
+                    "description": "TUIC user password."
+                },
+                "congestion_control": {
+                    "type": "string",
+                    "enum": ["cubic", "new_reno", "bbr"],
+                    "description": "QUIC congestion control algorithm.\n\n`cubic` is used by default."
+                },
+                "udp_relay_mode": {
+                    "type": "string",
+                    "enum": ["native", "quic"],
+                    "description": "UDP packet relay mode.\n\n`native` is used by default."
+                },
+                "udp_over_stream": {
+                    "type": "boolean",
+                    "description": "UDP over TCP protocol for QUIC stream based UDP relay."
+                },
+                "zero_rtt_handshake": {
+                    "type": "boolean",
+                    "description": "Enable 0-RTT QUIC connection handshake."
+                },
+                "heartbeat": {
+                    "type": "string",
+                    "description": "Interval for sending heartbeat packets.\n\n`10s` is used by default."
+                },
+                "network": {
+                    "type": "string",
+                    "enum": ["tcp", "udp"],
+                    "description": "Enabled network.\n\nOne of `tcp` `udp`.\n\nBoth is enabled by default."
+                },
+                "tls": {
+                    "$ref": "../shared/tls-outbound.schema.json"
+                }
+            },
+            "required": ["type", "server", "server_port", "uuid", "tls"]
+        },
+        {
+            "$ref": "../shared/dial.schema.json"
+        }
+    ]
+}

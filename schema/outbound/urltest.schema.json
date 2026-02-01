@@ -1,0 +1,39 @@
+{
+    "properties": {
+        "type": {
+            "const": "urltest"
+        },
+        "tag": {
+            "type": "string",
+            "description": "The tag of the outbound."
+        },
+        "outbounds": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "List of outbound tags to test."
+        },
+        "url": {
+            "type": "string",
+            "description": "The URL to test.\n\n`https://www.gstatic.com/generate_204` will be used if empty."
+        },
+        "interval": {
+            "type": "string",
+            "description": "The test interval.\n\n`3m` will be used if empty."
+        },
+        "tolerance": {
+            "type": "integer",
+            "description": "The test tolerance in milliseconds.\n\n`50` will be used if empty."
+        },
+        "idle_timeout": {
+            "type": "string",
+            "description": "The idle timeout.\n\n`30m` will be used if empty."
+        },
+        "interrupt_exist_connections": {
+            "type": "boolean",
+            "description": "Interrupt existing connections when the selected outbound has changed."
+        }
+    },
+    "required": ["type", "outbounds"]
+}

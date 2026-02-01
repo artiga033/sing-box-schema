@@ -1,0 +1,19 @@
+{
+    "allOf": [
+        {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "const": "dhcp"
+                },
+                "interface": {
+                    "type": "string",
+                    "description": "Interface name to listen on.\n\nThe default interface will be used by default."
+                }
+            }
+        },
+        {
+            "$ref": "../../shared/dial.schema.json"
+        }
+    ]
+}

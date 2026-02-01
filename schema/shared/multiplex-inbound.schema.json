@@ -1,0 +1,16 @@
+{
+    "type": "object",
+    "properties": {
+        "enabled": {
+            "type": "boolean",
+            "description": "Enable multiplex support."
+        },
+        "padding": {
+            "type": "boolean",
+            "description": "If enabled, non-padded connections will be rejected."
+        },
+        "brutal": {
+            "$ref": "./tcp-brutal.schema.json"
+        }
+    }
+}

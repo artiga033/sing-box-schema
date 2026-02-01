@@ -1,0 +1,140 @@
+{
+    "$defs": {
+        "defaultHeadlessRule": {
+            "type": "object",
+            "properties": {
+                "query_type": {
+                    "oneOf": [
+                        { "type": "string" },
+                        { "type": "integer" },
+                        { "type": "array", "items": { "oneOf": [{ "type": "string" }, { "type": "integer" }] } }
+                    ],
+                    "description": "DNS query type. Values can be integers or type name strings."
+                },
+                "network": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "`tcp` or `udp`."
+                },
+                "domain": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "Match full domain."
+                },
+                "domain_suffix": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "Match domain suffix."
+                },
+                "domain_keyword": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "Match domain using keyword."
+                },
+                "domain_regex": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "Match domain using regular expression."
+                },
+                "source_ip_cidr": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "Match source IP CIDR."
+                },
+                "ip_cidr": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "Match IP CIDR."
+                },
+                "source_port": {
+                    "oneOf": [
+                        { "type": "integer" },
+                        { "type": "array", "items": { "type": "integer" } }
+                    ],
+                    "description": "Match source port."
+                },
+                "source_port_range": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "Match source port range."
+                },
+                "port": {
+                    "oneOf": [
+                        { "type": "integer" },
+                        { "type": "array", "items": { "type": "integer" } }
+                    ],
+                    "description": "Match port."
+                },
+                "port_range": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "Match port range."
+                },
+                "process_name": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "> Only supported on Linux, Windows, and macOS.\n\nMatch process name."
+                },
+                "process_path": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "> Only supported on Linux, Windows, and macOS.\n\nMatch process path."
+                },
+                "process_path_regex": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "🆕 Since sing-box 1.10.0\n\nMatch process path using regular expression."
+                },
+                "package_name": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "Match android package name."
+                },
+                "network_type": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "🆕 Since sing-box 1.11.0\n\nMatch network type."
+                },
+                "network_is_expensive": {
+                    "type": "boolean",
+                    "description": "🆕 Since sing-box 1.11.0\n\nMatch if network is considered expensive."
+                },
+                "network_is_constrained": {
+                    "type": "boolean",
+                    "description": "🆕 Since sing-box 1.11.0\n\nMatch if network is in Low Data Mode."
+                },
+                "wifi_ssid": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "Match WiFi SSID."
+                },
+                "wifi_bssid": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "Match WiFi BSSID."
+                },
+                "invert": {
+                    "type": "boolean",
+                    "description": "Invert match result."
+                }
+            }
+        },
+        "logicalHeadlessRule": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "const": "logical"
+                },
+                "mode": {
+                    "type": "string",
+                    "enum": ["and", "or"],
+                    "description": "`and` or `or`"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/defaultHeadlessRule"
+                    },
+                    "description": "Included rules."
+                },
+                "invert": {
+                    "type": "boolean",
+                    "description": "Invert match result."
+                }
+            },
+            "required": ["type", "mode", "rules"]
+        }
+    },
+    "oneOf": [
+        {
+            "$ref": "#/$defs/defaultHeadlessRule"
+        },
+        {
+            "$ref": "#/$defs/logicalHeadlessRule"
+        }
+    ]
+}

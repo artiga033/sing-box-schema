@@ -1,0 +1,55 @@
+{
+    "allOf": [
+        {
+            "properties": {
+                "type": {
+                    "const": "vless"
+                },
+                "tag": {
+                    "type": "string",
+                    "description": "The tag of the outbound."
+                },
+                "server": {
+                    "type": "string",
+                    "description": "The server address."
+                },
+                "server_port": {
+                    "type": "integer",
+                    "description": "The server port."
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "VLESS user id."
+                },
+                "flow": {
+                    "type": "string",
+                    "enum": ["", "xtls-rprx-vision"],
+                    "description": "VLESS Sub-protocol."
+                },
+                "network": {
+                    "type": "string",
+                    "enum": ["tcp", "udp"],
+                    "description": "Enabled network.\n\nOne of `tcp` `udp`.\n\nBoth is enabled by default."
+                },
+                "tls": {
+                    "$ref": "../shared/tls-outbound.schema.json"
+                },
+                "packet_encoding": {
+                    "type": "string",
+                    "enum": ["", "packetaddr", "xudp"],
+                    "description": "UDP packet encoding, xudp is used by default."
+                },
+                "multiplex": {
+                    "$ref": "../shared/multiplex-outbound.schema.json"
+                },
+                "transport": {
+                    "$ref": "../shared/v2ray-transport.schema.json"
+                }
+            },
+            "required": ["type", "server", "server_port", "uuid"]
+        },
+        {
+            "$ref": "../shared/dial.schema.json"
+        }
+    ]
+}

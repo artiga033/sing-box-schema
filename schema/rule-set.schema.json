@@ -1,0 +1,74 @@
+{
+    "type": "object",
+    "oneOf": [
+        {
+            "properties": {
+                "type": {
+                    "const": "inline"
+                },
+                "tag": {
+                    "type": "string",
+                    "description": "Tag of rule-set."
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "./rule-set/headless-rule.schema.json"
+                    },
+                    "description": "List of Headless Rule."
+                }
+            },
+            "required": ["tag", "rules"]
+        },
+        {
+            "properties": {
+                "type": {
+                    "const": "local"
+                },
+                "tag": {
+                    "type": "string",
+                    "description": "Tag of rule-set."
+                },
+                "format": {
+                    "type": "string",
+                    "enum": ["source", "binary"],
+                    "description": "Format of rule-set file, `source` or `binary`."
+                },
+                "path": {
+                    "type": "string",
+                    "description": "File path of rule-set."
+                }
+            },
+            "required": ["type", "tag", "path"]
+        },
+        {
+            "properties": {
+                "type": {
+                    "const": "remote"
+                },
+                "tag": {
+                    "type": "string",
+                    "description": "Tag of rule-set."
+                },
+                "format": {
+                    "type": "string",
+                    "enum": ["source", "binary"],
+                    "description": "Format of rule-set file, `source` or `binary`."
+                },
+                "url": {
+                    "type": "string",
+                    "description": "Download URL of rule-set."
+                },
+                "download_detour": {
+                    "type": "string",
+                    "description": "Tag of the outbound to download rule-set."
+                },
+                "update_interval": {
+                    "type": "string",
+                    "description": "Update interval of rule-set.\n\n`1d` will be used if empty."
+                }
+            },
+            "required": ["type", "tag", "url"]
+        }
+    ]
+}

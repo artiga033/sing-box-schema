@@ -1,0 +1,41 @@
+{
+    "allOf": [
+        {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "const": "h3"
+                },
+                "server": {
+                    "type": "string",
+                    "description": "The address of the DNS server.\n\nIf domain name is used, `domain_resolver` must also be set to resolve IP address."
+                },
+                "server_port": {
+                    "type": "integer",
+                    "default": 443,
+                    "description": "The port of the DNS server.\n\n`443` will be used by default."
+                },
+                "path": {
+                    "type": "string",
+                    "default": "/dns-query",
+                    "description": "The path of the DNS server.\n\n`/dns-query` will be used by default."
+                },
+                "headers": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Additional headers to be sent to the DNS server."
+                },
+                "tls": {
+                    "$ref": "../../shared/tls-outbound.schema.json",
+                    "description": "TLS configuration."
+                }
+            },
+            "required": ["server"]
+        },
+        {
+            "$ref": "../../shared/dial.schema.json"
+        }
+    ]
+}

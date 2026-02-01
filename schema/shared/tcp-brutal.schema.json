@@ -1,0 +1,17 @@
+{
+    "type": "object",
+    "properties": {
+        "enabled": {
+            "type": "boolean",
+            "description": "Enable TCP Brutal congestion control algorithm."
+        },
+        "up_mbps": {
+            "type": "integer",
+            "description": "Upload bandwidth, in Mbps."
+        },
+        "down_mbps": {
+            "type": "integer",
+            "description": "Download bandwidth, in Mbps."
+        }
+    }
+}

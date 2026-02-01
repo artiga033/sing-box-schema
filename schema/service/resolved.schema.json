@@ -1,0 +1,19 @@
+{
+    "allOf": [
+        {
+            "properties": {
+                "type": {
+                    "const": "resolved"
+                },
+                "tag": {
+                    "type": "string",
+                    "description": "The tag of the service."
+                }
+            },
+            "required": ["type"]
+        },
+        {
+            "$ref": "../shared/listen.schema.json"
+        }
+    ]
+}

@@ -1,0 +1,103 @@
+{
+    "allOf": [
+        {
+            "properties": {
+                "type": {
+                    "const": "wireguard"
+                },
+                "tag": {
+                    "type": "string",
+                    "description": "The tag of the outbound."
+                },
+                "server": {
+                    "type": "string",
+                    "description": "The server address."
+                },
+                "server_port": {
+                    "type": "integer",
+                    "description": "The server port."
+                },
+                "system_interface": {
+                    "type": "boolean",
+                    "description": "Use system interface."
+                },
+                "interface_name": {
+                    "type": "string",
+                    "description": "Custom interface name for system interface."
+                },
+                "local_address": {
+                    "$ref": "../types/string-or-array.schema.json",
+                    "description": "List of IP (v4 or v6) address prefixes to be assigned to the interface."
+                },
+                "private_key": {
+                    "type": "string",
+                    "description": "WireGuard private key (base64-encoded)."
+                },
+                "peers": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "server": {
+                                "type": "string"
+                            },
+                            "server_port": {
+                                "type": "integer"
+                            },
+                            "public_key": {
+                                "type": "string"
+                            },
+                            "pre_shared_key": {
+                                "type": "string"
+                            },
+                            "allowed_ips": {
+                                "$ref": "../types/string-or-array.schema.json"
+                            },
+                            "reserved": {
+                                "type": "array",
+                                "items": { "type": "integer" }
+                            }
+                        }
+                    },
+                    "description": "Multi-peer support."
+                },
+                "peer_public_key": {
+                    "type": "string",
+                    "description": "WireGuard peer public key."
+                },
+                "pre_shared_key": {
+                    "type": "string",
+                    "description": "WireGuard pre-shared key."
+                },
+                "reserved": {
+                    "type": "array",
+                    "items": { "type": "integer" },
+                    "description": "WireGuard reserved field bytes."
+                },
+                "workers": {
+                    "type": "integer",
+                    "description": "WireGuard worker count.\n\nCPU count is used by default."
+                },
+                "mtu": {
+                    "type": "integer",
+                    "description": "WireGuard MTU.\n\n1408 will be used if empty."
+                },
+                "network": {
+                    "type": "string",
+                    "enum": ["tcp", "udp"],
+                    "description": "Enabled network.\n\nOne of `tcp` `udp`.\n\nBoth is enabled by default."
+                },
+                "gso": {
+                    "type": "boolean",
+                    "deprecated": true,
+                    "description": "Deprecated in sing-box 1.11.0."
+                }
+            },
+            "deprecated": true,
+            "required": ["type", "local_address", "private_key"]
+        },
+        {
+            "$ref": "../shared/dial.schema.json"
+        }
+    ]
+}
