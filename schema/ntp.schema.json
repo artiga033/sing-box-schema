@@ -1,31 +1,33 @@
 {
-    "type": "object",
-    "allOf": [
-        {
-            "properties": {
-                "enabled": {
-                    "type": "boolean",
-                    "description": "Enable NTP service."
-                },
-                "server": {
-                    "type": "string",
-                    "description": "NTP server address."
-                },
-                "server_port": {
-                    "type": "integer",
-                    "default": 123,
-                    "description": "NTP server port.\n\n123 is used by default."
-                },
-                "interval": {
-                    "type": "string",
-                    "default": "30m",
-                    "description": "Time synchronization interval.\n\n30 minutes is used by default."
-                }
-            },
-            "required": ["server"]
-        },
-        {
-            "$ref": "./shared/dial.schema.json"
-        }
-    ]
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://artiga033.github.io/sing-box-schema/ntp.schema.json",
+	"type": "object",
+	"allOf": [
+		{
+			"properties": {
+				"enabled": {
+					"type": "boolean",
+					"description": "Enable NTP service."
+				},
+				"server": {
+					"type": "string",
+					"description": "NTP server address."
+				},
+				"server_port": {
+					"type": "integer",
+					"default": 123,
+					"description": "NTP server port.\n\n123 is used by default."
+				},
+				"interval": {
+					"type": "string",
+					"default": "30m",
+					"description": "Time synchronization interval.\n\n30 minutes is used by default."
+				}
+			},
+			"required": ["server"]
+		},
+		{
+			"$ref": "./shared/dial.schema.json"
+		}
+	]
 }

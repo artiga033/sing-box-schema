@@ -1,228 +1,208 @@
 {
-    "type": "object",
-    "oneOf": [
-        {
-            "properties": {
-                "outbound": {
-                    "type": "string",
-                    "description": "Tag of target outbound."
-                },
-                "override_address": {
-                    "type": "string",
-                    "description": "Override the connection destination address."
-                },
-                "override_port": {
-                    "type": "integer",
-                    "description": "Override the connection destination port."
-                },
-                "network_strategy": {
-                    "type": "string",
-                    "description": "Network strategy."
-                },
-                "network_type": {
-                    "$ref": "../types/string-or-array.schema.json",
-                    "description": "Network types."
-                },
-                "fallback_network_type": {
-                    "$ref": "../types/string-or-array.schema.json",
-                    "description": "Fallback network types."
-                },
-                "fallback_delay": {
-                    "type": "string",
-                    "description": "Fallback delay."
-                },
-                "udp_disable_domain_unmapping": {
-                    "type": "boolean",
-                    "description": "Disable domain unmapping for UDP."
-                },
-                "udp_connect": {
-                    "type": "boolean",
-                    "description": "Connect UDP connection to the destination."
-                },
-                "udp_timeout": {
-                    "type": "string",
-                    "description": "Timeout for UDP connections."
-                },
-                "tls_fragment": {
-                    "type": "boolean",
-                    "description": "🆕 Since sing-box 1.12.0\n\nFragment TLS handshakes to bypass firewalls."
-                },
-                "tls_fragment_fallback_delay": {
-                    "type": "string",
-                    "description": "🆕 Since sing-box 1.12.0\n\nThe fallback value used when TLS segmentation cannot automatically determine the wait time."
-                },
-                "tls_record_fragment": {
-                    "type": "boolean",
-                    "description": "🆕 Since sing-box 1.12.0\n\nFragment TLS handshake into multiple TLS records."
-                }
-            },
-            "required": [
-                "outbound"
-            ],
-            "if": {
-                "properties": {
-                    "action": {
-                        "type": "string"
-                    }
-                },
-                "required": [
-                    "action"
-                ]
-            },
-            "then": {
-                "properties": {
-                    "action": {
-                        "const": "route"
-                    }
-                }
-            }
-        },
-        {
-            "properties": {
-                "action": {
-                    "const": "route-options"
-                },
-                "override_address": {
-                    "type": "string"
-                },
-                "override_port": {
-                    "type": "integer"
-                },
-                "network_strategy": {
-                    "type": "string"
-                },
-                "network_type": {
-                    "$ref": "../types/string-or-array.schema.json"
-                },
-                "fallback_network_type": {
-                    "$ref": "../types/string-or-array.schema.json"
-                },
-                "fallback_delay": {
-                    "type": "string"
-                },
-                "udp_disable_domain_unmapping": {
-                    "type": "boolean"
-                },
-                "udp_connect": {
-                    "type": "boolean"
-                },
-                "udp_timeout": {
-                    "type": "string"
-                },
-                "tls_fragment": {
-                    "type": "boolean"
-                },
-                "tls_fragment_fallback_delay": {
-                    "type": "string"
-                },
-                "tls_record_fragment": {
-                    "type": "boolean"
-                }
-            },
-            "required": [
-                "action"
-            ]
-        },
-        {
-            "properties": {
-                "action": {
-                    "const": "reject"
-                },
-                "method": {
-                    "type": "string",
-                    "enum": [
-                        "default",
-                        "drop"
-                    ],
-                    "description": "Reject method."
-                },
-                "no_drop": {
-                    "type": "boolean",
-                    "description": "If not enabled, `method` will be temporarily overwritten to `drop` after 50 triggers in 30s."
-                }
-            },
-            "required": [
-                "action"
-            ]
-        },
-        {
-            "properties": {
-                "action": {
-                    "const": "hijack-dns"
-                }
-            },
-            "required": [
-                "action"
-            ]
-        },
-        {
-            "properties": {
-                "action": {
-                    "const": "sniff"
-                },
-                "sniffer": {
-                    "type": "array",
-                    "items": {
-                        "type": "string",
-                        "enum": [
-                            "http",
-                            "tls",
-                            "quic",
-                            "stun",
-                            "dns",
-                            "bittorrent",
-                            "dtls",
-                            "ssh",
-                            "rdp",
-                            "ntp"
-                        ]
-                    },
-                    "description": "Enabled sniffers.\n\nAll sniffers enabled by default."
-                },
-                "timeout": {
-                    "type": "string",
-                    "description": "Timeout for sniffing.\n\n`300ms` is used by default."
-                }
-            },
-            "required": [
-                "action"
-            ]
-        },
-        {
-            "properties": {
-                "action": {
-                    "const": "resolve"
-                },
-                "server": {
-                    "type": "string",
-                    "description": "Specifies DNS server tag to use."
-                },
-                "strategy": {
-                    "type": "string",
-                    "enum": [
-                        "prefer_ipv4",
-                        "prefer_ipv6",
-                        "ipv4_only",
-                        "ipv6_only"
-                    ],
-                    "description": "DNS resolution strategy."
-                },
-                "disable_cache": {
-                    "type": "boolean",
-                    "description": "🆕 Since sing-box 1.12.0\n\nDisable cache and save cache in this query."
-                },
-                "rewrite_ttl": {
-                    "type": "integer",
-                    "description": "🆕 Since sing-box 1.12.0\n\nRewrite TTL in DNS responses."
-                },
-                "client_subnet": {
-                    "type": "string",
-                    "description": "🆕 Since sing-box 1.12.0\n\nAppend a `edns0-subnet` OPT extra record."
-                }
-            },
-            "required": [
-                "action"
-            ]
-        }
-    ]
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://artiga033.github.io/sing-box-schema/route/rule_action.schema.json",
+	"type": "object",
+	"oneOf": [
+		{
+			"properties": {
+				"outbound": {
+					"type": "string",
+					"description": "Tag of target outbound."
+				},
+				"override_address": {
+					"type": "string",
+					"description": "Override the connection destination address."
+				},
+				"override_port": {
+					"type": "integer",
+					"description": "Override the connection destination port."
+				},
+				"network_strategy": {
+					"type": "string",
+					"description": "Network strategy."
+				},
+				"network_type": {
+					"$ref": "../types/string-or-array.schema.json",
+					"description": "Network types."
+				},
+				"fallback_network_type": {
+					"$ref": "../types/string-or-array.schema.json",
+					"description": "Fallback network types."
+				},
+				"fallback_delay": {
+					"type": "string",
+					"description": "Fallback delay."
+				},
+				"udp_disable_domain_unmapping": {
+					"type": "boolean",
+					"description": "Disable domain unmapping for UDP."
+				},
+				"udp_connect": {
+					"type": "boolean",
+					"description": "Connect UDP connection to the destination."
+				},
+				"udp_timeout": {
+					"type": "string",
+					"description": "Timeout for UDP connections."
+				},
+				"tls_fragment": {
+					"type": "boolean",
+					"description": "🆕 Since sing-box 1.12.0\n\nFragment TLS handshakes to bypass firewalls."
+				},
+				"tls_fragment_fallback_delay": {
+					"type": "string",
+					"description": "🆕 Since sing-box 1.12.0\n\nThe fallback value used when TLS segmentation cannot automatically determine the wait time."
+				},
+				"tls_record_fragment": {
+					"type": "boolean",
+					"description": "🆕 Since sing-box 1.12.0\n\nFragment TLS handshake into multiple TLS records."
+				}
+			},
+			"required": ["outbound"],
+			"if": {
+				"properties": {
+					"action": {
+						"type": "string"
+					}
+				},
+				"required": ["action"]
+			},
+			"then": {
+				"properties": {
+					"action": {
+						"const": "route"
+					}
+				}
+			}
+		},
+		{
+			"properties": {
+				"action": {
+					"const": "route-options"
+				},
+				"override_address": {
+					"type": "string"
+				},
+				"override_port": {
+					"type": "integer"
+				},
+				"network_strategy": {
+					"type": "string"
+				},
+				"network_type": {
+					"$ref": "../types/string-or-array.schema.json"
+				},
+				"fallback_network_type": {
+					"$ref": "../types/string-or-array.schema.json"
+				},
+				"fallback_delay": {
+					"type": "string"
+				},
+				"udp_disable_domain_unmapping": {
+					"type": "boolean"
+				},
+				"udp_connect": {
+					"type": "boolean"
+				},
+				"udp_timeout": {
+					"type": "string"
+				},
+				"tls_fragment": {
+					"type": "boolean"
+				},
+				"tls_fragment_fallback_delay": {
+					"type": "string"
+				},
+				"tls_record_fragment": {
+					"type": "boolean"
+				}
+			},
+			"required": ["action"]
+		},
+		{
+			"properties": {
+				"action": {
+					"const": "reject"
+				},
+				"method": {
+					"type": "string",
+					"enum": ["default", "drop"],
+					"description": "Reject method."
+				},
+				"no_drop": {
+					"type": "boolean",
+					"description": "If not enabled, `method` will be temporarily overwritten to `drop` after 50 triggers in 30s."
+				}
+			},
+			"required": ["action"]
+		},
+		{
+			"properties": {
+				"action": {
+					"const": "hijack-dns"
+				}
+			},
+			"required": ["action"]
+		},
+		{
+			"properties": {
+				"action": {
+					"const": "sniff"
+				},
+				"sniffer": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"enum": [
+							"http",
+							"tls",
+							"quic",
+							"stun",
+							"dns",
+							"bittorrent",
+							"dtls",
+							"ssh",
+							"rdp",
+							"ntp"
+						]
+					},
+					"description": "Enabled sniffers.\n\nAll sniffers enabled by default."
+				},
+				"timeout": {
+					"type": "string",
+					"description": "Timeout for sniffing.\n\n`300ms` is used by default."
+				}
+			},
+			"required": ["action"]
+		},
+		{
+			"properties": {
+				"action": {
+					"const": "resolve"
+				},
+				"server": {
+					"type": "string",
+					"description": "Specifies DNS server tag to use."
+				},
+				"strategy": {
+					"type": "string",
+					"enum": ["prefer_ipv4", "prefer_ipv6", "ipv4_only", "ipv6_only"],
+					"description": "DNS resolution strategy."
+				},
+				"disable_cache": {
+					"type": "boolean",
+					"description": "🆕 Since sing-box 1.12.0\n\nDisable cache and save cache in this query."
+				},
+				"rewrite_ttl": {
+					"type": "integer",
+					"description": "🆕 Since sing-box 1.12.0\n\nRewrite TTL in DNS responses."
+				},
+				"client_subnet": {
+					"type": "string",
+					"description": "🆕 Since sing-box 1.12.0\n\nAppend a `edns0-subnet` OPT extra record."
+				}
+			},
+			"required": ["action"]
+		}
+	]
 }

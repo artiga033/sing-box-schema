@@ -1,25 +1,27 @@
 {
-    "allOf": [
-        {
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "const": "udp"
-                },
-                "server": {
-                    "type": "string",
-                    "description": "The address of the DNS server.\n\nIf domain name is used, `domain_resolver` must also be set to resolve IP address."
-                },
-                "server_port": {
-                    "type": "integer",
-                    "default": 53,
-                    "description": "The port of the DNS server.\n\n`53` will be used by default."
-                }
-            },
-            "required": ["server"]
-        },
-        {
-            "$ref": "../../shared/dial.schema.json"
-        }
-    ]
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://artiga033.github.io/sing-box-schema/dns/server/udp.schema.json",
+	"allOf": [
+		{
+			"properties": {
+				"type": {
+					"type": "string",
+					"const": "udp"
+				},
+				"server": {
+					"type": "string",
+					"description": "The address of the DNS server.\n\nIf domain name is used, `domain_resolver` must also be set to resolve IP address."
+				},
+				"server_port": {
+					"type": "integer",
+					"default": 53,
+					"description": "The port of the DNS server.\n\n`53` will be used by default."
+				}
+			},
+			"required": ["server"]
+		},
+		{
+			"$ref": "../../shared/dial.schema.json"
+		}
+	]
 }

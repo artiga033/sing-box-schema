@@ -1,17 +1,19 @@
 {
-    "properties": {
-        "type": {
-            "type": "string",
-            "const": "resolved"
-        },
-        "service": {
-            "type": "string",
-            "description": "The tag of the Resolved Service."
-        },
-        "accept_default_resolvers": {
-            "type": "boolean",
-            "description": "Indicates whether the default DNS resolvers should be accepted for fallback queries in addition to matching domains.\n\nSpecifically, default DNS resolvers are DNS servers that have `SetLinkDefaultRoute` or `SetLinkDomains ~.` set.\n\nIf not enabled, `NXDOMAIN` will be returned for requests that do not match search or match domains."
-        }
-    },
-    "required": ["service"]
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://artiga033.github.io/sing-box-schema/dns/server/resolved.schema.json",
+	"properties": {
+		"type": {
+			"type": "string",
+			"const": "resolved"
+		},
+		"service": {
+			"type": "string",
+			"description": "The tag of the Resolved Service."
+		},
+		"accept_default_resolvers": {
+			"type": "boolean",
+			"description": "Indicates whether the default DNS resolvers should be accepted for fallback queries in addition to matching domains.\n\nSpecifically, default DNS resolvers are DNS servers that have `SetLinkDefaultRoute` or `SetLinkDomains ~.` set.\n\nIf not enabled, `NXDOMAIN` will be returned for requests that do not match search or match domains."
+		}
+	},
+	"required": ["service"]
 }

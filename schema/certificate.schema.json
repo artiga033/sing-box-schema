@@ -1,22 +1,24 @@
 {
-    "type": "object",
-    "properties": {
-        "store": {
-            "type": "string",
-            "enum": ["system", "mozilla", "none"],
-            "description": "🆕 Since sing-box 1.12.0\n\nThe default X509 trusted CA certificate list.\n\n- `system` (default): System trusted CA certificates\n- `mozilla`: Mozilla Included List with China CA certificates removed\n- `none`: Empty list"
-        },
-        "certificate": {
-            "$ref": "./types/string-or-array.schema.json",
-            "description": "The certificate line array to trust, in PEM format."
-        },
-        "certificate_path": {
-            "$ref": "./types/string-or-array.schema.json",
-            "description": "The paths to certificates to trust, in PEM format.\n\nWill be automatically reloaded if file modified."
-        },
-        "certificate_directory_path": {
-            "$ref": "./types/string-or-array.schema.json",
-            "description": "The directory path to search for certificates to trust, in PEM format.\n\nWill be automatically reloaded if file modified."
-        }
-    }
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://artiga033.github.io/sing-box-schema/certificate.schema.json",
+	"type": "object",
+	"properties": {
+		"store": {
+			"type": "string",
+			"enum": ["system", "mozilla", "none"],
+			"description": "🆕 Since sing-box 1.12.0\n\nThe default X509 trusted CA certificate list.\n\n- `system` (default): System trusted CA certificates\n- `mozilla`: Mozilla Included List with China CA certificates removed\n- `none`: Empty list"
+		},
+		"certificate": {
+			"$ref": "./types/string-or-array.schema.json",
+			"description": "The certificate line array to trust, in PEM format."
+		},
+		"certificate_path": {
+			"$ref": "./types/string-or-array.schema.json",
+			"description": "The paths to certificates to trust, in PEM format.\n\nWill be automatically reloaded if file modified."
+		},
+		"certificate_directory_path": {
+			"$ref": "./types/string-or-array.schema.json",
+			"description": "The directory path to search for certificates to trust, in PEM format.\n\nWill be automatically reloaded if file modified."
+		}
+	}
 }

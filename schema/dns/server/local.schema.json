@@ -1,15 +1,17 @@
 {
-    "allOf": [
-        {
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "const": "local"
-                }
-            }
-        },
-        {
-            "$ref": "../../shared/dial.schema.json"
-        }
-    ]
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://artiga033.github.io/sing-box-schema/dns/server/local.schema.json",
+	"allOf": [
+		{
+			"properties": {
+				"type": {
+					"type": "string",
+					"const": "local"
+				}
+			}
+		},
+		{
+			"$ref": "../../shared/dial.schema.json"
+		}
+	]
 }

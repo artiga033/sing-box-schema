@@ -1,46 +1,48 @@
 {
-    "allOf": [
-        {
-            "properties": {
-                "type": {
-                    "const": "anytls"
-                },
-                "tag": {
-                    "type": "string",
-                    "description": "The tag of the outbound."
-                },
-                "server": {
-                    "type": "string",
-                    "description": "The server address."
-                },
-                "server_port": {
-                    "type": "integer",
-                    "description": "The server port."
-                },
-                "password": {
-                    "type": "string",
-                    "description": "The AnyTLS password."
-                },
-                "idle_session_check_interval": {
-                    "type": "string",
-                    "description": "Interval checking for idle sessions.\n\nDefault: 30s."
-                },
-                "idle_session_timeout": {
-                    "type": "string",
-                    "description": "In the check, close sessions that have been idle for longer than this.\n\nDefault: 30s."
-                },
-                "min_idle_session": {
-                    "type": "integer",
-                    "description": "In the check, at least the first `n` idle sessions are kept open.\n\nDefault value: n=0"
-                },
-                "tls": {
-                    "$ref": "../shared/tls-outbound.schema.json"
-                }
-            },
-            "required": ["type", "server", "server_port", "password", "tls"]
-        },
-        {
-            "$ref": "../shared/dial.schema.json"
-        }
-    ]
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://artiga033.github.io/sing-box-schema/outbound/anytls.schema.json",
+	"allOf": [
+		{
+			"properties": {
+				"type": {
+					"const": "anytls"
+				},
+				"tag": {
+					"type": "string",
+					"description": "The tag of the outbound."
+				},
+				"server": {
+					"type": "string",
+					"description": "The server address."
+				},
+				"server_port": {
+					"type": "integer",
+					"description": "The server port."
+				},
+				"password": {
+					"type": "string",
+					"description": "The AnyTLS password."
+				},
+				"idle_session_check_interval": {
+					"type": "string",
+					"description": "Interval checking for idle sessions.\n\nDefault: 30s."
+				},
+				"idle_session_timeout": {
+					"type": "string",
+					"description": "In the check, close sessions that have been idle for longer than this.\n\nDefault: 30s."
+				},
+				"min_idle_session": {
+					"type": "integer",
+					"description": "In the check, at least the first `n` idle sessions are kept open.\n\nDefault value: n=0"
+				},
+				"tls": {
+					"$ref": "../shared/tls-outbound.schema.json"
+				}
+			},
+			"required": ["type", "server", "server_port", "password", "tls"]
+		},
+		{
+			"$ref": "../shared/dial.schema.json"
+		}
+	]
 }

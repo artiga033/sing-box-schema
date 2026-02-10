@@ -1,48 +1,50 @@
 {
-    "allOf": [
-        {
-            "properties": {
-                "type": {
-                    "const": "vmess"
-                },
-                "tag": {
-                    "type": "string",
-                    "description": "The tag of the inbound."
-                },
-                "users": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "name": {
-                                "type": "string"
-                            },
-                            "uuid": {
-                                "type": "string"
-                            },
-                            "alterId": {
-                                "type": "integer",
-                                "description": "0 to disable legacy protocol, > 0 to enable legacy protocol."
-                            }
-                        },
-                        "required": ["uuid"]
-                    },
-                    "description": "VMess users."
-                },
-                "tls": {
-                    "$ref": "../shared/tls-inbound.schema.json"
-                },
-                "multiplex": {
-                    "$ref": "../shared/multiplex-inbound.schema.json"
-                },
-                "transport": {
-                    "$ref": "../shared/v2ray-transport.schema.json"
-                }
-            },
-            "required": ["type", "users"]
-        },
-        {
-            "$ref": "../shared/listen.schema.json"
-        }
-    ]
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://artiga033.github.io/sing-box-schema/inbound/vmess.schema.json",
+	"allOf": [
+		{
+			"properties": {
+				"type": {
+					"const": "vmess"
+				},
+				"tag": {
+					"type": "string",
+					"description": "The tag of the inbound."
+				},
+				"users": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"uuid": {
+								"type": "string"
+							},
+							"alterId": {
+								"type": "integer",
+								"description": "0 to disable legacy protocol, > 0 to enable legacy protocol."
+							}
+						},
+						"required": ["uuid"]
+					},
+					"description": "VMess users."
+				},
+				"tls": {
+					"$ref": "../shared/tls-inbound.schema.json"
+				},
+				"multiplex": {
+					"$ref": "../shared/multiplex-inbound.schema.json"
+				},
+				"transport": {
+					"$ref": "../shared/v2ray-transport.schema.json"
+				}
+			},
+			"required": ["type", "users"]
+		},
+		{
+			"$ref": "../shared/listen.schema.json"
+		}
+	]
 }

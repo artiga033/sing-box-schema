@@ -1,12 +1,14 @@
 {
-    "properties": {
-        "type": {
-            "const": "block"
-        },
-        "tag": {
-            "type": "string",
-            "description": "The tag of the outbound."
-        }
-    },
-    "required": ["type"]
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://artiga033.github.io/sing-box-schema/outbound/block.schema.json",
+	"properties": {
+		"type": {
+			"const": "block"
+		},
+		"tag": {
+			"type": "string",
+			"description": "The tag of the outbound."
+		}
+	},
+	"required": ["type"]
 }

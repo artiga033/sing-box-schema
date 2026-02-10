@@ -1,87 +1,89 @@
 {
-    "type": "object",
-    "properties": {
-        "listen": {
-            "type": "string",
-            "description": "Listen address."
-        },
-        "listen_port": {
-            "type": "integer",
-            "minimum": 0,
-            "maximum": 65535,
-            "description": "Listen port."
-        },
-        "bind_interface": {
-            "type": "string",
-            "description": "🆕 Since sing-box 1.12.0\n\nThe network interface to bind to."
-        },
-        "routing_mark": {
-            "description": "🆕 Since sing-box 1.12.0\n\n> Only supported on Linux.\n\nSet netfilter routing mark.\n\nIntegers (e.g. `1234`) and string hexadecimals (e.g. `\"0x1234\"`) are supported.",
-            "oneOf": [
-                {
-                    "type": "integer",
-                    "minimum": 0,
-                    "maximum": 4294967295
-                },
-                {
-                    "type": "string",
-                    "pattern": "^0x[0-9a-fA-F]+$"
-                }
-            ]
-        },
-        "reuse_addr": {
-            "type": "boolean",
-            "description": "🆕 Since sing-box 1.12.0\n\nReuse listener address."
-        },
-        "netns": {
-            "type": "string",
-            "description": "🆕 Since sing-box 1.12.0\n\n> Only supported on Linux.\n\nSet network namespace, name or path."
-        },
-        "tcp_fast_open": {
-            "type": "boolean",
-            "description": "Enable TCP Fast Open."
-        },
-        "tcp_multi_path": {
-            "type": "boolean",
-            "description": "Enable TCP Multi Path."
-        },
-        "udp_fragment": {
-            "type": "boolean",
-            "description": "Enable UDP fragmentation."
-        },
-        "udp_timeout": {
-            "type": "string",
-            "description": "UDP NAT expiration time.\n\n`5m` will be used by default."
-        },
-        "detour": {
-            "type": "string",
-            "description": "If set, connections will be forwarded to the specified inbound.\n\nRequires target inbound support."
-        },
-        "sniff": {
-            "type": "boolean",
-            "deprecated": true,
-            "description": "Enable sniffing.\n\nDeprecated in sing-box 1.11.0."
-        },
-        "sniff_override_destination": {
-            "type": "boolean",
-            "deprecated": true,
-            "description": "Override the connection destination address with the sniffed domain.\n\nDeprecated in sing-box 1.11.0."
-        },
-        "sniff_timeout": {
-            "type": "string",
-            "deprecated": true,
-            "description": "Timeout for sniffing.\n\n`300ms` is used by default.\n\nDeprecated in sing-box 1.11.0."
-        },
-        "domain_strategy": {
-            "type": "string",
-            "enum": ["prefer_ipv4", "prefer_ipv6", "ipv4_only", "ipv6_only"],
-            "deprecated": true,
-            "description": "If set, the requested domain name will be resolved to IP before routing.\n\nDeprecated in sing-box 1.11.0."
-        },
-        "udp_disable_domain_unmapping": {
-            "type": "boolean",
-            "deprecated": true,
-            "description": "If enabled, for UDP proxy requests addressed to a domain, the original packet address will be sent in the response instead of the mapped domain.\n\nDeprecated in sing-box 1.11.0."
-        }
-    }
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://artiga033.github.io/sing-box-schema/shared/listen.schema.json",
+	"type": "object",
+	"properties": {
+		"listen": {
+			"type": "string",
+			"description": "Listen address."
+		},
+		"listen_port": {
+			"type": "integer",
+			"minimum": 0,
+			"maximum": 65535,
+			"description": "Listen port."
+		},
+		"bind_interface": {
+			"type": "string",
+			"description": "🆕 Since sing-box 1.12.0\n\nThe network interface to bind to."
+		},
+		"routing_mark": {
+			"description": "🆕 Since sing-box 1.12.0\n\n> Only supported on Linux.\n\nSet netfilter routing mark.\n\nIntegers (e.g. `1234`) and string hexadecimals (e.g. `\"0x1234\"`) are supported.",
+			"oneOf": [
+				{
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 4294967295
+				},
+				{
+					"type": "string",
+					"pattern": "^0x[0-9a-fA-F]+$"
+				}
+			]
+		},
+		"reuse_addr": {
+			"type": "boolean",
+			"description": "🆕 Since sing-box 1.12.0\n\nReuse listener address."
+		},
+		"netns": {
+			"type": "string",
+			"description": "🆕 Since sing-box 1.12.0\n\n> Only supported on Linux.\n\nSet network namespace, name or path."
+		},
+		"tcp_fast_open": {
+			"type": "boolean",
+			"description": "Enable TCP Fast Open."
+		},
+		"tcp_multi_path": {
+			"type": "boolean",
+			"description": "Enable TCP Multi Path."
+		},
+		"udp_fragment": {
+			"type": "boolean",
+			"description": "Enable UDP fragmentation."
+		},
+		"udp_timeout": {
+			"type": "string",
+			"description": "UDP NAT expiration time.\n\n`5m` will be used by default."
+		},
+		"detour": {
+			"type": "string",
+			"description": "If set, connections will be forwarded to the specified inbound.\n\nRequires target inbound support."
+		},
+		"sniff": {
+			"type": "boolean",
+			"deprecated": true,
+			"description": "Enable sniffing.\n\nDeprecated in sing-box 1.11.0."
+		},
+		"sniff_override_destination": {
+			"type": "boolean",
+			"deprecated": true,
+			"description": "Override the connection destination address with the sniffed domain.\n\nDeprecated in sing-box 1.11.0."
+		},
+		"sniff_timeout": {
+			"type": "string",
+			"deprecated": true,
+			"description": "Timeout for sniffing.\n\n`300ms` is used by default.\n\nDeprecated in sing-box 1.11.0."
+		},
+		"domain_strategy": {
+			"type": "string",
+			"enum": ["prefer_ipv4", "prefer_ipv6", "ipv4_only", "ipv6_only"],
+			"deprecated": true,
+			"description": "If set, the requested domain name will be resolved to IP before routing.\n\nDeprecated in sing-box 1.11.0."
+		},
+		"udp_disable_domain_unmapping": {
+			"type": "boolean",
+			"deprecated": true,
+			"description": "If enabled, for UDP proxy requests addressed to a domain, the original packet address will be sent in the response instead of the mapped domain.\n\nDeprecated in sing-box 1.11.0."
+		}
+	}
 }

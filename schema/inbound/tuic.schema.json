@@ -1,60 +1,62 @@
 {
-    "allOf": [
-        {
-            "properties": {
-                "type": {
-                    "const": "tuic"
-                },
-                "tag": {
-                    "type": "string",
-                    "description": "The tag of the inbound."
-                },
-                "users": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "name": {
-                                "type": "string"
-                            },
-                            "uuid": {
-                                "type": "string",
-                                "description": "TUIC user uuid."
-                            },
-                            "password": {
-                                "type": "string",
-                                "description": "TUIC user password."
-                            }
-                        },
-                        "required": ["uuid"]
-                    },
-                    "description": "TUIC users."
-                },
-                "congestion_control": {
-                    "type": "string",
-                    "enum": ["cubic", "new_reno", "bbr"],
-                    "description": "QUIC congestion control algorithm.\n\n`cubic` is used by default."
-                },
-                "auth_timeout": {
-                    "type": "string",
-                    "description": "How long the server should wait for the client to send the authentication command.\n\n`3s` is used by default."
-                },
-                "zero_rtt_handshake": {
-                    "type": "boolean",
-                    "description": "Enable 0-RTT QUIC connection handshake on the client side."
-                },
-                "heartbeat": {
-                    "type": "string",
-                    "description": "Interval for sending heartbeat packets for keeping the connection alive.\n\n`10s` is used by default."
-                },
-                "tls": {
-                    "$ref": "../shared/tls-inbound.schema.json"
-                }
-            },
-            "required": ["type", "tls"]
-        },
-        {
-            "$ref": "../shared/listen.schema.json"
-        }
-    ]
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://artiga033.github.io/sing-box-schema/inbound/tuic.schema.json",
+	"allOf": [
+		{
+			"properties": {
+				"type": {
+					"const": "tuic"
+				},
+				"tag": {
+					"type": "string",
+					"description": "The tag of the inbound."
+				},
+				"users": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"uuid": {
+								"type": "string",
+								"description": "TUIC user uuid."
+							},
+							"password": {
+								"type": "string",
+								"description": "TUIC user password."
+							}
+						},
+						"required": ["uuid"]
+					},
+					"description": "TUIC users."
+				},
+				"congestion_control": {
+					"type": "string",
+					"enum": ["cubic", "new_reno", "bbr"],
+					"description": "QUIC congestion control algorithm.\n\n`cubic` is used by default."
+				},
+				"auth_timeout": {
+					"type": "string",
+					"description": "How long the server should wait for the client to send the authentication command.\n\n`3s` is used by default."
+				},
+				"zero_rtt_handshake": {
+					"type": "boolean",
+					"description": "Enable 0-RTT QUIC connection handshake on the client side."
+				},
+				"heartbeat": {
+					"type": "string",
+					"description": "Interval for sending heartbeat packets for keeping the connection alive.\n\n`10s` is used by default."
+				},
+				"tls": {
+					"$ref": "../shared/tls-inbound.schema.json"
+				}
+			},
+			"required": ["type", "tls"]
+		},
+		{
+			"$ref": "../shared/listen.schema.json"
+		}
+	]
 }

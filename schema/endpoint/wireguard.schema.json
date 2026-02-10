@@ -1,97 +1,99 @@
 {
-    "type": "object",
-    "allOf": [
-        {
-            "properties": {
-                "type": {
-                    "const": "wireguard"
-                },
-                "tag": {
-                    "type": "string",
-                    "description": "The tag of the endpoint."
-                },
-                "system": {
-                    "type": "boolean",
-                    "description": "Use system interface.\n\nRequires privilege and cannot conflict with exists system interfaces."
-                },
-                "name": {
-                    "type": "string",
-                    "description": "Custom interface name for system interface."
-                },
-                "mtu": {
-                    "type": "integer",
-                    "default": 1408,
-                    "description": "WireGuard MTU.\n\n`1408` will be used by default."
-                },
-                "address": {
-                    "$ref": "../types/string-or-array.schema.json",
-                    "description": "List of IP (v4 or v6) address prefixes to be assigned to the interface."
-                },
-                "private_key": {
-                    "type": "string",
-                    "description": "WireGuard private key (base64-encoded)."
-                },
-                "listen_port": {
-                    "type": "integer",
-                    "description": "WireGuard listen port."
-                },
-                "peers": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "address": {
-                                "type": "string",
-                                "description": "WireGuard peer address."
-                            },
-                            "port": {
-                                "type": "integer",
-                                "description": "WireGuard peer port."
-                            },
-                            "public_key": {
-                                "type": "string",
-                                "description": "WireGuard peer public key."
-                            },
-                            "pre_shared_key": {
-                                "type": "string",
-                                "description": "WireGuard peer pre-shared key."
-                            },
-                            "allowed_ips": {
-                                "$ref": "../types/string-or-array.schema.json",
-                                "description": "WireGuard allowed IPs."
-                            },
-                            "persistent_keepalive_interval": {
-                                "type": "integer",
-                                "description": "WireGuard persistent keepalive interval, in seconds.\n\nDisabled by default."
-                            },
-                            "reserved": {
-                                "type": "array",
-                                "items": {
-                                    "type": "integer"
-                                },
-                                "minItems": 3,
-                                "maxItems": 3,
-                                "description": "WireGuard reserved field bytes."
-                            }
-                        },
-                        "required": ["public_key", "allowed_ips"]
-                    },
-                    "description": "List of WireGuard peers."
-                },
-                "udp_timeout": {
-                    "type": "string",
-                    "default": "5m",
-                    "description": "UDP NAT expiration time.\n\n`5m` will be used by default."
-                },
-                "workers": {
-                    "type": "integer",
-                    "description": "WireGuard worker count.\n\nCPU count is used by default."
-                }
-            },
-            "required": ["type", "address", "private_key", "peers"]
-        },
-        {
-            "$ref": "../shared/dial.schema.json"
-        }
-    ]
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://artiga033.github.io/sing-box-schema/endpoint/wireguard.schema.json",
+	"type": "object",
+	"allOf": [
+		{
+			"properties": {
+				"type": {
+					"const": "wireguard"
+				},
+				"tag": {
+					"type": "string",
+					"description": "The tag of the endpoint."
+				},
+				"system": {
+					"type": "boolean",
+					"description": "Use system interface.\n\nRequires privilege and cannot conflict with exists system interfaces."
+				},
+				"name": {
+					"type": "string",
+					"description": "Custom interface name for system interface."
+				},
+				"mtu": {
+					"type": "integer",
+					"default": 1408,
+					"description": "WireGuard MTU.\n\n`1408` will be used by default."
+				},
+				"address": {
+					"$ref": "../types/string-or-array.schema.json",
+					"description": "List of IP (v4 or v6) address prefixes to be assigned to the interface."
+				},
+				"private_key": {
+					"type": "string",
+					"description": "WireGuard private key (base64-encoded)."
+				},
+				"listen_port": {
+					"type": "integer",
+					"description": "WireGuard listen port."
+				},
+				"peers": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"address": {
+								"type": "string",
+								"description": "WireGuard peer address."
+							},
+							"port": {
+								"type": "integer",
+								"description": "WireGuard peer port."
+							},
+							"public_key": {
+								"type": "string",
+								"description": "WireGuard peer public key."
+							},
+							"pre_shared_key": {
+								"type": "string",
+								"description": "WireGuard peer pre-shared key."
+							},
+							"allowed_ips": {
+								"$ref": "../types/string-or-array.schema.json",
+								"description": "WireGuard allowed IPs."
+							},
+							"persistent_keepalive_interval": {
+								"type": "integer",
+								"description": "WireGuard persistent keepalive interval, in seconds.\n\nDisabled by default."
+							},
+							"reserved": {
+								"type": "array",
+								"items": {
+									"type": "integer"
+								},
+								"minItems": 3,
+								"maxItems": 3,
+								"description": "WireGuard reserved field bytes."
+							}
+						},
+						"required": ["public_key", "allowed_ips"]
+					},
+					"description": "List of WireGuard peers."
+				},
+				"udp_timeout": {
+					"type": "string",
+					"default": "5m",
+					"description": "UDP NAT expiration time.\n\n`5m` will be used by default."
+				},
+				"workers": {
+					"type": "integer",
+					"description": "WireGuard worker count.\n\nCPU count is used by default."
+				}
+			},
+			"required": ["type", "address", "private_key", "peers"]
+		},
+		{
+			"$ref": "../shared/dial.schema.json"
+		}
+	]
 }

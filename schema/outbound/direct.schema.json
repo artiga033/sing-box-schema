@@ -1,27 +1,29 @@
 {
-    "properties": {
-        "type": {
-            "const": "direct"
-        },
-        "tag": {
-            "type": "string",
-            "description": "The tag of the outbound."
-        },
-        "override_address": {
-            "type": "string",
-            "deprecated": true,
-            "description": "Deprecated in sing-box 1.11.0.\n\nOverride the connection destination address."
-        },
-        "override_port": {
-            "type": "integer",
-            "deprecated": true,
-            "description": "Deprecated in sing-box 1.11.0.\n\nOverride the connection destination port."
-        }
-    },
-    "allOf": [
-        {
-            "$ref": "../shared/dial.schema.json"
-        }
-    ],
-    "required": ["type"]
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://artiga033.github.io/sing-box-schema/outbound/direct.schema.json",
+	"properties": {
+		"type": {
+			"const": "direct"
+		},
+		"tag": {
+			"type": "string",
+			"description": "The tag of the outbound."
+		},
+		"override_address": {
+			"type": "string",
+			"deprecated": true,
+			"description": "Deprecated in sing-box 1.11.0.\n\nOverride the connection destination address."
+		},
+		"override_port": {
+			"type": "integer",
+			"deprecated": true,
+			"description": "Deprecated in sing-box 1.11.0.\n\nOverride the connection destination port."
+		}
+	},
+	"allOf": [
+		{
+			"$ref": "../shared/dial.schema.json"
+		}
+	],
+	"required": ["type"]
 }

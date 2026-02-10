@@ -1,30 +1,24 @@
 {
-    "type": "object",
-    "properties": {
-        "disabled": {
-            "type": "boolean",
-            "description": "Disable logging, no output after start."
-        },
-        "level": {
-            "type": "string",
-            "description": "Log level.",
-            "enum": [
-                "trace",
-                "debug",
-                "info",
-                "warn",
-                "error",
-                "fatal",
-                "panic"
-            ]
-        },
-        "output": {
-            "type": "string",
-            "description": "Output file path. Will not write log to console after enable."
-        },
-        "timestamp": {
-            "type": "boolean",
-            "description": "Add time to each line."
-        }
-    }
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://artiga033.github.io/sing-box-schema/log.schema.json",
+	"type": "object",
+	"properties": {
+		"disabled": {
+			"type": "boolean",
+			"description": "Disable logging, no output after start."
+		},
+		"level": {
+			"type": "string",
+			"description": "Log level.",
+			"enum": ["trace", "debug", "info", "warn", "error", "fatal", "panic"]
+		},
+		"output": {
+			"type": "string",
+			"description": "Output file path. Will not write log to console after enable."
+		},
+		"timestamp": {
+			"type": "boolean",
+			"description": "Add time to each line."
+		}
+	}
 }

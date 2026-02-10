@@ -1,62 +1,64 @@
 {
-    "type": "object",
-    "properties": {
-        "external_controller": {
-            "type": "string",
-            "description": "RESTful web API listening address. Clash API will be disabled if empty."
-        },
-        "external_ui": {
-            "type": "string",
-            "description": "A relative path to the configuration directory or an absolute path to a directory in which you put some static web resource."
-        },
-        "external_ui_download_url": {
-            "type": "string",
-            "description": "ZIP download URL for the external UI."
-        },
-        "external_ui_download_detour": {
-            "type": "string",
-            "description": "The tag of the outbound to download the external UI."
-        },
-        "secret": {
-            "type": "string",
-            "description": "Secret for the RESTful API."
-        },
-        "default_mode": {
-            "type": "string",
-            "description": "Default mode in clash, `Rule` will be used if empty."
-        },
-        "access_control_allow_origin": {
-            "$ref": "../types/string-or-array.schema.json",
-            "description": "🆕 Since sing-box 1.10.0\n\nCORS allowed origins, `*` will be used if empty."
-        },
-        "access_control_allow_private_network": {
-            "type": "boolean",
-            "description": "🆕 Since sing-box 1.10.0\n\nAllow access from private network."
-        },
-        "store_mode": {
-            "type": "boolean",
-            "deprecated": true,
-            "description": "Deprecated in sing-box 1.8.0."
-        },
-        "store_selected": {
-            "type": "boolean",
-            "deprecated": true,
-            "description": "Deprecated in sing-box 1.8.0."
-        },
-        "store_fakeip": {
-            "type": "boolean",
-            "deprecated": true,
-            "description": "Deprecated in sing-box 1.8.0."
-        },
-        "cache_file": {
-            "type": "string",
-            "deprecated": true,
-            "description": "Deprecated in sing-box 1.8.0."
-        },
-        "cache_id": {
-            "type": "string",
-            "deprecated": true,
-            "description": "Deprecated in sing-box 1.8.0."
-        }
-    }
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://artiga033.github.io/sing-box-schema/experimental/clash-api.schema.json",
+	"type": "object",
+	"properties": {
+		"external_controller": {
+			"type": "string",
+			"description": "RESTful web API listening address. Clash API will be disabled if empty."
+		},
+		"external_ui": {
+			"type": "string",
+			"description": "A relative path to the configuration directory or an absolute path to a directory in which you put some static web resource."
+		},
+		"external_ui_download_url": {
+			"type": "string",
+			"description": "ZIP download URL for the external UI."
+		},
+		"external_ui_download_detour": {
+			"type": "string",
+			"description": "The tag of the outbound to download the external UI."
+		},
+		"secret": {
+			"type": "string",
+			"description": "Secret for the RESTful API."
+		},
+		"default_mode": {
+			"type": "string",
+			"description": "Default mode in clash, `Rule` will be used if empty."
+		},
+		"access_control_allow_origin": {
+			"$ref": "../types/string-or-array.schema.json",
+			"description": "🆕 Since sing-box 1.10.0\n\nCORS allowed origins, `*` will be used if empty."
+		},
+		"access_control_allow_private_network": {
+			"type": "boolean",
+			"description": "🆕 Since sing-box 1.10.0\n\nAllow access from private network."
+		},
+		"store_mode": {
+			"type": "boolean",
+			"deprecated": true,
+			"description": "Deprecated in sing-box 1.8.0."
+		},
+		"store_selected": {
+			"type": "boolean",
+			"deprecated": true,
+			"description": "Deprecated in sing-box 1.8.0."
+		},
+		"store_fakeip": {
+			"type": "boolean",
+			"deprecated": true,
+			"description": "Deprecated in sing-box 1.8.0."
+		},
+		"cache_file": {
+			"type": "string",
+			"deprecated": true,
+			"description": "Deprecated in sing-box 1.8.0."
+		},
+		"cache_id": {
+			"type": "string",
+			"deprecated": true,
+			"description": "Deprecated in sing-box 1.8.0."
+		}
+	}
 }

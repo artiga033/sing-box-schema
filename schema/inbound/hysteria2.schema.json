@@ -1,115 +1,117 @@
 {
-    "allOf": [
-        {
-            "properties": {
-                "type": {
-                    "const": "hysteria2"
-                },
-                "tag": {
-                    "type": "string",
-                    "description": "The tag of the inbound."
-                },
-                "up_mbps": {
-                    "type": "integer",
-                    "description": "Max upload bandwidth in Mbps.\n\nNot limited if empty."
-                },
-                "down_mbps": {
-                    "type": "integer",
-                    "description": "Max download bandwidth in Mbps.\n\nNot limited if empty."
-                },
-                "obfs": {
-                    "type": "object",
-                    "properties": {
-                        "type": {
-                            "type": "string",
-                            "enum": ["salamander"],
-                            "description": "QUIC traffic obfuscator type."
-                        },
-                        "password": {
-                            "type": "string",
-                            "description": "QUIC traffic obfuscator password."
-                        }
-                    },
-                    "description": "QUIC traffic obfuscation."
-                },
-                "users": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "name": {
-                                "type": "string"
-                            },
-                            "password": {
-                                "type": "string",
-                                "description": "Authentication password."
-                            }
-                        },
-                        "required": ["password"]
-                    },
-                    "description": "Hysteria2 users."
-                },
-                "ignore_client_bandwidth": {
-                    "type": "boolean",
-                    "description": "Commands clients to use the BBR CC instead of Hysteria CC when bandwidth is not set."
-                },
-                "tls": {
-                    "$ref": "../shared/tls-inbound.schema.json"
-                },
-                "masquerade": {
-                    "oneOf": [
-                        {
-                            "type": "string",
-                            "description": "HTTP3 server behavior (URL string configuration) when authentication fails."
-                        },
-                        {
-                            "type": "object",
-                            "properties": {
-                                "type": {
-                                    "type": "string",
-                                    "enum": ["file", "proxy", "string"],
-                                    "description": "Masquerade type."
-                                },
-                                "directory": {
-                                    "type": "string",
-                                    "description": "File server root directory."
-                                },
-                                "url": {
-                                    "type": "string",
-                                    "description": "Reverse proxy target URL."
-                                },
-                                "rewrite_host": {
-                                    "type": "boolean",
-                                    "description": "Rewrite the `Host` header to the target URL."
-                                },
-                                "status_code": {
-                                    "type": "integer",
-                                    "description": "Fixed response status code."
-                                },
-                                "headers": {
-                                    "type": "object",
-                                    "additionalProperties": {
-                                        "type": "string"
-                                    },
-                                    "description": "Fixed response headers."
-                                },
-                                "content": {
-                                    "type": "string",
-                                    "description": "Fixed response content."
-                                }
-                            }
-                        }
-                    ]
-                },
-                "brutal_debug": {
-                    "type": "boolean",
-                    "description": "Enable debug information logging for Hysteria Brutal CC."
-                }
-            },
-            "required": ["type", "tls"]
-        },
-        {
-            "$ref": "../shared/listen.schema.json"
-        }
-    ]
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://artiga033.github.io/sing-box-schema/inbound/hysteria2.schema.json",
+	"allOf": [
+		{
+			"properties": {
+				"type": {
+					"const": "hysteria2"
+				},
+				"tag": {
+					"type": "string",
+					"description": "The tag of the inbound."
+				},
+				"up_mbps": {
+					"type": "integer",
+					"description": "Max upload bandwidth in Mbps.\n\nNot limited if empty."
+				},
+				"down_mbps": {
+					"type": "integer",
+					"description": "Max download bandwidth in Mbps.\n\nNot limited if empty."
+				},
+				"obfs": {
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string",
+							"enum": ["salamander"],
+							"description": "QUIC traffic obfuscator type."
+						},
+						"password": {
+							"type": "string",
+							"description": "QUIC traffic obfuscator password."
+						}
+					},
+					"description": "QUIC traffic obfuscation."
+				},
+				"users": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"password": {
+								"type": "string",
+								"description": "Authentication password."
+							}
+						},
+						"required": ["password"]
+					},
+					"description": "Hysteria2 users."
+				},
+				"ignore_client_bandwidth": {
+					"type": "boolean",
+					"description": "Commands clients to use the BBR CC instead of Hysteria CC when bandwidth is not set."
+				},
+				"tls": {
+					"$ref": "../shared/tls-inbound.schema.json"
+				},
+				"masquerade": {
+					"oneOf": [
+						{
+							"type": "string",
+							"description": "HTTP3 server behavior (URL string configuration) when authentication fails."
+						},
+						{
+							"type": "object",
+							"properties": {
+								"type": {
+									"type": "string",
+									"enum": ["file", "proxy", "string"],
+									"description": "Masquerade type."
+								},
+								"directory": {
+									"type": "string",
+									"description": "File server root directory."
+								},
+								"url": {
+									"type": "string",
+									"description": "Reverse proxy target URL."
+								},
+								"rewrite_host": {
+									"type": "boolean",
+									"description": "Rewrite the `Host` header to the target URL."
+								},
+								"status_code": {
+									"type": "integer",
+									"description": "Fixed response status code."
+								},
+								"headers": {
+									"type": "object",
+									"additionalProperties": {
+										"type": "string"
+									},
+									"description": "Fixed response headers."
+								},
+								"content": {
+									"type": "string",
+									"description": "Fixed response content."
+								}
+							}
+						}
+					]
+				},
+				"brutal_debug": {
+					"type": "boolean",
+					"description": "Enable debug information logging for Hysteria Brutal CC."
+				}
+			},
+			"required": ["type", "tls"]
+		},
+		{
+			"$ref": "../shared/listen.schema.json"
+		}
+	]
 }

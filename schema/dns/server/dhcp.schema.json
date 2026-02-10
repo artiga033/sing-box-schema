@@ -1,19 +1,21 @@
 {
-    "allOf": [
-        {
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "const": "dhcp"
-                },
-                "interface": {
-                    "type": "string",
-                    "description": "Interface name to listen on.\n\nThe default interface will be used by default."
-                }
-            }
-        },
-        {
-            "$ref": "../../shared/dial.schema.json"
-        }
-    ]
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://artiga033.github.io/sing-box-schema/dns/server/dhcp.schema.json",
+	"allOf": [
+		{
+			"properties": {
+				"type": {
+					"type": "string",
+					"const": "dhcp"
+				},
+				"interface": {
+					"type": "string",
+					"description": "Interface name to listen on.\n\nThe default interface will be used by default."
+				}
+			}
+		},
+		{
+			"$ref": "../../shared/dial.schema.json"
+		}
+	]
 }

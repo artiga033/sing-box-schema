@@ -1,14 +1,16 @@
 {
-    "$comment": "singbox allows using single string for array types if there is only one element.\n\nThis type is to allow the behavior.",
-    "oneOf": [
-        {
-            "type": "string"
-        },
-        {
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        }
-    ]
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://artiga033.github.io/sing-box-schema/types/string-or-array.schema.json",
+	"$comment": "singbox allows using single string for array types if there is only one element.\n\nThis type is to allow the behavior.",
+	"oneOf": [
+		{
+			"type": "string"
+		},
+		{
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		}
+	]
 }

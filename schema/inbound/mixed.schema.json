@@ -1,39 +1,41 @@
 {
-    "allOf": [
-        {
-            "properties": {
-                "type": {
-                    "const": "mixed"
-                },
-                "tag": {
-                    "type": "string",
-                    "description": "The tag of the inbound."
-                },
-                "users": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "username": {
-                                "type": "string"
-                            },
-                            "password": {
-                                "type": "string"
-                            }
-                        },
-                        "required": ["username", "password"]
-                    },
-                    "description": "SOCKS and HTTP users.\n\nNo authentication required if empty."
-                },
-                "set_system_proxy": {
-                    "type": "boolean",
-                    "description": "> Only supported on Linux, Android, Windows, and macOS.\n\nAutomatically set system proxy configuration when start and clean up when stop."
-                }
-            },
-            "required": ["type"]
-        },
-        {
-            "$ref": "../shared/listen.schema.json"
-        }
-    ]
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://artiga033.github.io/sing-box-schema/inbound/mixed.schema.json",
+	"allOf": [
+		{
+			"properties": {
+				"type": {
+					"const": "mixed"
+				},
+				"tag": {
+					"type": "string",
+					"description": "The tag of the inbound."
+				},
+				"users": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"username": {
+								"type": "string"
+							},
+							"password": {
+								"type": "string"
+							}
+						},
+						"required": ["username", "password"]
+					},
+					"description": "SOCKS and HTTP users.\n\nNo authentication required if empty."
+				},
+				"set_system_proxy": {
+					"type": "boolean",
+					"description": "> Only supported on Linux, Android, Windows, and macOS.\n\nAutomatically set system proxy configuration when start and clean up when stop."
+				}
+			},
+			"required": ["type"]
+		},
+		{
+			"$ref": "../shared/listen.schema.json"
+		}
+	]
 }

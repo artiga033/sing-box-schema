@@ -1,29 +1,31 @@
 {
-    "type": "object",
-    "properties": {
-        "enabled": {
-            "type": "boolean",
-            "description": "Enable cache file."
-        },
-        "path": {
-            "type": "string",
-            "description": "Path to the cache file.\n\n`cache.db` will be used if empty."
-        },
-        "cache_id": {
-            "type": "string",
-            "description": "Identifier in the cache file.\n\nIf not empty, configuration specified data will use a separate store keyed by it."
-        },
-        "store_fakeip": {
-            "type": "boolean",
-            "description": "Store fakeip in the cache file."
-        },
-        "store_rdrc": {
-            "type": "boolean",
-            "description": "🆕 Since sing-box 1.9.0\n\nStore rejected DNS response cache in the cache file."
-        },
-        "rdrc_timeout": {
-            "type": "string",
-            "description": "🆕 Since sing-box 1.9.0\n\nTimeout of rejected DNS response cache.\n\n`7d` is used by default."
-        }
-    }
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://artiga033.github.io/sing-box-schema/experimental/cache-file.schema.json",
+	"type": "object",
+	"properties": {
+		"enabled": {
+			"type": "boolean",
+			"description": "Enable cache file."
+		},
+		"path": {
+			"type": "string",
+			"description": "Path to the cache file.\n\n`cache.db` will be used if empty."
+		},
+		"cache_id": {
+			"type": "string",
+			"description": "Identifier in the cache file.\n\nIf not empty, configuration specified data will use a separate store keyed by it."
+		},
+		"store_fakeip": {
+			"type": "boolean",
+			"description": "Store fakeip in the cache file."
+		},
+		"store_rdrc": {
+			"type": "boolean",
+			"description": "🆕 Since sing-box 1.9.0\n\nStore rejected DNS response cache in the cache file."
+		},
+		"rdrc_timeout": {
+			"type": "string",
+			"description": "🆕 Since sing-box 1.9.0\n\nTimeout of rejected DNS response cache.\n\n`7d` is used by default."
+		}
+	}
 }

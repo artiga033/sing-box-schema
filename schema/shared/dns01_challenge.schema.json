@@ -1,37 +1,39 @@
 {
-    "type": "object",
-    "oneOf": [
-        {
-            "properties": {
-                "provider": {
-                    "const": "alidns"
-                },
-                "access_key_id": {
-                    "type": "string",
-                    "description": "Alibaba Cloud access key ID."
-                },
-                "access_key_secret": {
-                    "type": "string",
-                    "description": "Alibaba Cloud access key secret."
-                },
-                "region_id": {
-                    "type": "string",
-                    "description": "Alibaba Cloud region ID."
-                }
-            },
-            "required": ["provider", "access_key_id", "access_key_secret"]
-        },
-        {
-            "properties": {
-                "provider": {
-                    "const": "cloudflare"
-                },
-                "api_token": {
-                    "type": "string",
-                    "description": "Cloudflare API token."
-                }
-            },
-            "required": ["provider", "api_token"]
-        }
-    ]
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://artiga033.github.io/sing-box-schema/shared/dns01_challenge.schema.json",
+	"type": "object",
+	"oneOf": [
+		{
+			"properties": {
+				"provider": {
+					"const": "alidns"
+				},
+				"access_key_id": {
+					"type": "string",
+					"description": "Alibaba Cloud access key ID."
+				},
+				"access_key_secret": {
+					"type": "string",
+					"description": "Alibaba Cloud access key secret."
+				},
+				"region_id": {
+					"type": "string",
+					"description": "Alibaba Cloud region ID."
+				}
+			},
+			"required": ["provider", "access_key_id", "access_key_secret"]
+		},
+		{
+			"properties": {
+				"provider": {
+					"const": "cloudflare"
+				},
+				"api_token": {
+					"type": "string",
+					"description": "Cloudflare API token."
+				}
+			},
+			"required": ["provider", "api_token"]
+		}
+	]
 }

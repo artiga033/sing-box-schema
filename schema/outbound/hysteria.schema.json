@@ -1,83 +1,85 @@
 {
-    "allOf": [
-        {
-            "properties": {
-                "type": {
-                    "const": "hysteria"
-                },
-                "tag": {
-                    "type": "string",
-                    "description": "The tag of the outbound."
-                },
-                "server": {
-                    "type": "string",
-                    "description": "The server address."
-                },
-                "server_port": {
-                    "type": "integer",
-                    "description": "The server port."
-                },
-                "server_ports": {
-                    "$ref": "../types/string-or-array.schema.json",
-                    "description": "🆕 Since sing-box 1.12.0\n\nServer port range list."
-                },
-                "hop_interval": {
-                    "type": "string",
-                    "description": "🆕 Since sing-box 1.12.0\n\nPort hopping interval.\n\n`30s` is used by default."
-                },
-                "up": {
-                    "type": "string",
-                    "description": "Max upload bandwidth.\n\nFormat: `[Integer] [Unit]` e.g. `100 Mbps`"
-                },
-                "up_mbps": {
-                    "type": "integer",
-                    "description": "Max upload bandwidth in Mbps."
-                },
-                "down": {
-                    "type": "string",
-                    "description": "Max download bandwidth.\n\nFormat: `[Integer] [Unit]` e.g. `100 Mbps`"
-                },
-                "down_mbps": {
-                    "type": "integer",
-                    "description": "Max download bandwidth in Mbps."
-                },
-                "obfs": {
-                    "type": "string",
-                    "description": "Obfuscated password."
-                },
-                "auth": {
-                    "type": "string",
-                    "description": "Authentication password, in base64."
-                },
-                "auth_str": {
-                    "type": "string",
-                    "description": "Authentication password."
-                },
-                "recv_window_conn": {
-                    "type": "integer",
-                    "description": "The QUIC stream-level flow control window for receiving data."
-                },
-                "recv_window": {
-                    "type": "integer",
-                    "description": "The QUIC connection-level flow control window for receiving data."
-                },
-                "disable_mtu_discovery": {
-                    "type": "boolean",
-                    "description": "Disables Path MTU Discovery (RFC 8899)."
-                },
-                "network": {
-                    "type": "string",
-                    "enum": ["tcp", "udp"],
-                    "description": "Enabled network.\n\nOne of `tcp` `udp`.\n\nBoth is enabled by default."
-                },
-                "tls": {
-                    "$ref": "../shared/tls-outbound.schema.json"
-                }
-            },
-            "required": ["type", "server", "tls"]
-        },
-        {
-            "$ref": "../shared/dial.schema.json"
-        }
-    ]
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://artiga033.github.io/sing-box-schema/outbound/hysteria.schema.json",
+	"allOf": [
+		{
+			"properties": {
+				"type": {
+					"const": "hysteria"
+				},
+				"tag": {
+					"type": "string",
+					"description": "The tag of the outbound."
+				},
+				"server": {
+					"type": "string",
+					"description": "The server address."
+				},
+				"server_port": {
+					"type": "integer",
+					"description": "The server port."
+				},
+				"server_ports": {
+					"$ref": "../types/string-or-array.schema.json",
+					"description": "🆕 Since sing-box 1.12.0\n\nServer port range list."
+				},
+				"hop_interval": {
+					"type": "string",
+					"description": "🆕 Since sing-box 1.12.0\n\nPort hopping interval.\n\n`30s` is used by default."
+				},
+				"up": {
+					"type": "string",
+					"description": "Max upload bandwidth.\n\nFormat: `[Integer] [Unit]` e.g. `100 Mbps`"
+				},
+				"up_mbps": {
+					"type": "integer",
+					"description": "Max upload bandwidth in Mbps."
+				},
+				"down": {
+					"type": "string",
+					"description": "Max download bandwidth.\n\nFormat: `[Integer] [Unit]` e.g. `100 Mbps`"
+				},
+				"down_mbps": {
+					"type": "integer",
+					"description": "Max download bandwidth in Mbps."
+				},
+				"obfs": {
+					"type": "string",
+					"description": "Obfuscated password."
+				},
+				"auth": {
+					"type": "string",
+					"description": "Authentication password, in base64."
+				},
+				"auth_str": {
+					"type": "string",
+					"description": "Authentication password."
+				},
+				"recv_window_conn": {
+					"type": "integer",
+					"description": "The QUIC stream-level flow control window for receiving data."
+				},
+				"recv_window": {
+					"type": "integer",
+					"description": "The QUIC connection-level flow control window for receiving data."
+				},
+				"disable_mtu_discovery": {
+					"type": "boolean",
+					"description": "Disables Path MTU Discovery (RFC 8899)."
+				},
+				"network": {
+					"type": "string",
+					"enum": ["tcp", "udp"],
+					"description": "Enabled network.\n\nOne of `tcp` `udp`.\n\nBoth is enabled by default."
+				},
+				"tls": {
+					"$ref": "../shared/tls-outbound.schema.json"
+				}
+			},
+			"required": ["type", "server", "tls"]
+		},
+		{
+			"$ref": "../shared/dial.schema.json"
+		}
+	]
 }

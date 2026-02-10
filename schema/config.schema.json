@@ -1,53 +1,54 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title": "sing-box config schema",
-    "type": "object",
-    "properties": {
-        "log": {
-            "$ref": "./log.schema.json"
-        },
-        "dns": {
-            "$ref": "./dns.schema.json"
-        },
-        "ntp": {
-            "$ref": "./ntp.schema.json"
-        },
-        "certificate": {
-            "$ref": "./certificate.schema.json"
-        },
-        "endpoints": {
-            "type": "array",
-            "items": {
-                "$ref": "./endpoint.schema.json"
-            },
-            "description": "List of endpoints."
-        },
-        "inbounds": {
-            "type": "array",
-            "items": {
-                "$ref": "./inbound.schema.json"
-            },
-            "description": "List of inbounds."
-        },
-        "outbounds": {
-            "type": "array",
-            "items": {
-                "$ref": "./outbound.schema.json"
-            },
-            "description": "List of outbounds."
-        },
-        "route": {
-            "$ref": "./route.schema.json"
-        },
-        "services": {
-            "type": "array",
-            "items": {
-                "$ref": "./service.schema.json"
-            },
-            "description": "List of services."
-        },
-        "experimental": {
-            "$ref": "./experimental.schema.json"
-        }
-    }
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://artiga033.github.io/sing-box-schema/config.schema.json",
+	"title": "sing-box config schema",
+	"type": "object",
+	"properties": {
+		"log": {
+			"$ref": "./log.schema.json"
+		},
+		"dns": {
+			"$ref": "./dns.schema.json"
+		},
+		"ntp": {
+			"$ref": "./ntp.schema.json"
+		},
+		"certificate": {
+			"$ref": "./certificate.schema.json"
+		},
+		"endpoints": {
+			"type": "array",
+			"items": {
+				"$ref": "./endpoint.schema.json"
+			},
+			"description": "List of endpoints."
+		},
+		"inbounds": {
+			"type": "array",
+			"items": {
+				"$ref": "./inbound.schema.json"
+			},
+			"description": "List of inbounds."
+		},
+		"outbounds": {
+			"type": "array",
+			"items": {
+				"$ref": "./outbound.schema.json"
+			},
+			"description": "List of outbounds."
+		},
+		"route": {
+			"$ref": "./route.schema.json"
+		},
+		"services": {
+			"type": "array",
+			"items": {
+				"$ref": "./service.schema.json"
+			},
+			"description": "List of services."
+		},
+		"experimental": {
+			"$ref": "./experimental.schema.json"
+		}
+	}
 }

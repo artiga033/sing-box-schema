@@ -1,61 +1,58 @@
 {
-    "type": "object",
-    "properties": {
-        "servers": {
-            "type": "array",
-            "items": {
-                "$ref": "./dns/server.schema.json"
-            },
-            "description": "List of DNS Server"
-        },
-        "rules": {
-            "type": "array",
-            "items": {
-                "$ref": "./dns/rule.schema.json"
-            },
-            "description": "List of DNS Rule"
-        },
-        "final": {
-            "type": "string",
-            "description": "Default dns server tag. The first server will be used if empty."
-        },
-        "strategy": {
-            "description": "Default domain strategy for resolving the domain names. Take no effect if server.strategy is set.",
-            "enum": [
-                "prefer_ipv4",
-                "prefer_ipv6",
-                "ipv4_only",
-                "ipv6_only"
-            ]
-        },
-        "disable_cache": {
-            "type": "boolean",
-            "description": "Disable dns cache."
-        },
-        "disable_expire": {
-            "type": "boolean",
-            "description": "Disable dns cache expire."
-        },
-        "independent_cache": {
-            "type": "boolean",
-            "description": "Make each DNS server's cache independent for special purposes. If enabled, will slightly degrade performance."
-        },
-        "cache_capacity": {
-            "type": "integer",
-            "minimum": 1024,
-            "description": "LRU cache capacity.\nValue less than 1024 will be ignored."
-        },
-        "reverse_mapping": {
-            "type": "boolean",
-            "description": "Stores a reverse mapping of IP addresses after responding to a DNS query in order to provide domain names when routing.\nSince this process relies on the act of resolving domain names by an application before making a request, it can be problematic in environments such as macOS, where DNS is proxied and cached by the system."
-        },
-        "client_subnet": {
-            "type": "string",
-            "description": "Append a edns0-subnet OPT extra record with the specified IP prefix to every query by default.\nIf value is an IP address instead of prefix, /32 or /128 will be appended automatically.\nCan be overrides by servers.[].client_subnet or rules.[].client_subnet.",
-            "pattern": "(\\d{1,3}(\\.\\d{1,3}){3}|([a-fA-F0-9:]+))(\\/\\d{1,3})?"
-        },
-        "fakeip": {
-            "$ref": "./dns/fakeip.schema.json"
-        }
-    }
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://artiga033.github.io/sing-box-schema/dns.schema.json",
+	"type": "object",
+	"properties": {
+		"servers": {
+			"type": "array",
+			"items": {
+				"$ref": "./dns/server.schema.json"
+			},
+			"description": "List of DNS Server"
+		},
+		"rules": {
+			"type": "array",
+			"items": {
+				"$ref": "./dns/rule.schema.json"
+			},
+			"description": "List of DNS Rule"
+		},
+		"final": {
+			"type": "string",
+			"description": "Default dns server tag. The first server will be used if empty."
+		},
+		"strategy": {
+			"description": "Default domain strategy for resolving the domain names. Take no effect if server.strategy is set.",
+			"enum": ["prefer_ipv4", "prefer_ipv6", "ipv4_only", "ipv6_only"]
+		},
+		"disable_cache": {
+			"type": "boolean",
+			"description": "Disable dns cache."
+		},
+		"disable_expire": {
+			"type": "boolean",
+			"description": "Disable dns cache expire."
+		},
+		"independent_cache": {
+			"type": "boolean",
+			"description": "Make each DNS server's cache independent for special purposes. If enabled, will slightly degrade performance."
+		},
+		"cache_capacity": {
+			"type": "integer",
+			"minimum": 1024,
+			"description": "LRU cache capacity.\nValue less than 1024 will be ignored."
+		},
+		"reverse_mapping": {
+			"type": "boolean",
+			"description": "Stores a reverse mapping of IP addresses after responding to a DNS query in order to provide domain names when routing.\nSince this process relies on the act of resolving domain names by an application before making a request, it can be problematic in environments such as macOS, where DNS is proxied and cached by the system."
+		},
+		"client_subnet": {
+			"type": "string",
+			"description": "Append a edns0-subnet OPT extra record with the specified IP prefix to every query by default.\nIf value is an IP address instead of prefix, /32 or /128 will be appended automatically.\nCan be overrides by servers.[].client_subnet or rules.[].client_subnet.",
+			"pattern": "(\\d{1,3}(\\.\\d{1,3}){3}|([a-fA-F0-9:]+))(\\/\\d{1,3})?"
+		},
+		"fakeip": {
+			"$ref": "./dns/fakeip.schema.json"
+		}
+	}
 }

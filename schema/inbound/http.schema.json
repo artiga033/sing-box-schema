@@ -1,42 +1,44 @@
 {
-    "allOf": [
-        {
-            "properties": {
-                "type": {
-                    "const": "http"
-                },
-                "tag": {
-                    "type": "string",
-                    "description": "The tag of the inbound."
-                },
-                "users": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "username": {
-                                "type": "string"
-                            },
-                            "password": {
-                                "type": "string"
-                            }
-                        },
-                        "required": ["username", "password"]
-                    },
-                    "description": "HTTP users.\n\nNo authentication required if empty."
-                },
-                "tls": {
-                    "$ref": "../shared/tls-inbound.schema.json"
-                },
-                "set_system_proxy": {
-                    "type": "boolean",
-                    "description": "> Only supported on Linux, Android, Windows, and macOS.\n\nAutomatically set system proxy configuration when start and clean up when stop."
-                }
-            },
-            "required": ["type"]
-        },
-        {
-            "$ref": "../shared/listen.schema.json"
-        }
-    ]
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://artiga033.github.io/sing-box-schema/inbound/http.schema.json",
+	"allOf": [
+		{
+			"properties": {
+				"type": {
+					"const": "http"
+				},
+				"tag": {
+					"type": "string",
+					"description": "The tag of the inbound."
+				},
+				"users": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"username": {
+								"type": "string"
+							},
+							"password": {
+								"type": "string"
+							}
+						},
+						"required": ["username", "password"]
+					},
+					"description": "HTTP users.\n\nNo authentication required if empty."
+				},
+				"tls": {
+					"$ref": "../shared/tls-inbound.schema.json"
+				},
+				"set_system_proxy": {
+					"type": "boolean",
+					"description": "> Only supported on Linux, Android, Windows, and macOS.\n\nAutomatically set system proxy configuration when start and clean up when stop."
+				}
+			},
+			"required": ["type"]
+		},
+		{
+			"$ref": "../shared/listen.schema.json"
+		}
+	]
 }

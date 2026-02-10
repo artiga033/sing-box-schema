@@ -1,18 +1,20 @@
 {
-    "properties": {
-        "type": {
-            "type": "string",
-            "const": "fakeip"
-        },
-        "inet4_range": {
-            "type": "string",
-            "default": "198.18.0.0/15",
-            "description": "IPv4 address range for FakeIP."
-        },
-        "inet6_range": {
-            "type": "string",
-            "default": "fc00::/18",
-            "description": "IPv6 address range for FakeIP."
-        }
-    }
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://artiga033.github.io/sing-box-schema/dns/server/fakeip.schema.json",
+	"properties": {
+		"type": {
+			"type": "string",
+			"const": "fakeip"
+		},
+		"inet4_range": {
+			"type": "string",
+			"default": "198.18.0.0/15",
+			"description": "IPv4 address range for FakeIP."
+		},
+		"inet6_range": {
+			"type": "string",
+			"default": "fc00::/18",
+			"description": "IPv6 address range for FakeIP."
+		}
+	}
 }

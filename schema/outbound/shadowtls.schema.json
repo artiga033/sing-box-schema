@@ -1,39 +1,41 @@
 {
-    "allOf": [
-        {
-            "properties": {
-                "type": {
-                    "const": "shadowtls"
-                },
-                "tag": {
-                    "type": "string",
-                    "description": "The tag of the outbound."
-                },
-                "server": {
-                    "type": "string",
-                    "description": "The server address."
-                },
-                "server_port": {
-                    "type": "integer",
-                    "description": "The server port."
-                },
-                "version": {
-                    "type": "integer",
-                    "enum": [1, 2, 3],
-                    "description": "ShadowTLS protocol version.\n\n1 is used by default."
-                },
-                "password": {
-                    "type": "string",
-                    "description": "Set password.\n\nOnly available in the ShadowTLS v2/v3 protocol."
-                },
-                "tls": {
-                    "$ref": "../shared/tls-outbound.schema.json"
-                }
-            },
-            "required": ["type", "server", "server_port", "tls"]
-        },
-        {
-            "$ref": "../shared/dial.schema.json"
-        }
-    ]
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://artiga033.github.io/sing-box-schema/outbound/shadowtls.schema.json",
+	"allOf": [
+		{
+			"properties": {
+				"type": {
+					"const": "shadowtls"
+				},
+				"tag": {
+					"type": "string",
+					"description": "The tag of the outbound."
+				},
+				"server": {
+					"type": "string",
+					"description": "The server address."
+				},
+				"server_port": {
+					"type": "integer",
+					"description": "The server port."
+				},
+				"version": {
+					"type": "integer",
+					"enum": [1, 2, 3],
+					"description": "ShadowTLS protocol version.\n\n1 is used by default."
+				},
+				"password": {
+					"type": "string",
+					"description": "Set password.\n\nOnly available in the ShadowTLS v2/v3 protocol."
+				},
+				"tls": {
+					"$ref": "../shared/tls-outbound.schema.json"
+				}
+			},
+			"required": ["type", "server", "server_port", "tls"]
+		},
+		{
+			"$ref": "../shared/dial.schema.json"
+		}
+	]
 }

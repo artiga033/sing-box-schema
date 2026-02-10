@@ -1,78 +1,80 @@
 {
-    "allOf": [
-        {
-            "properties": {
-                "type": {
-                    "const": "hysteria"
-                },
-                "tag": {
-                    "type": "string",
-                    "description": "The tag of the inbound."
-                },
-                "up": {
-                    "type": "string",
-                    "description": "Max upload bandwidth.\n\nFormat: `[Integer] [Unit]` e.g. `100 Mbps, 640 KBps, 2 Gbps`"
-                },
-                "up_mbps": {
-                    "type": "integer",
-                    "description": "Max upload bandwidth in Mbps."
-                },
-                "down": {
-                    "type": "string",
-                    "description": "Max download bandwidth.\n\nFormat: `[Integer] [Unit]` e.g. `100 Mbps, 640 KBps, 2 Gbps`"
-                },
-                "down_mbps": {
-                    "type": "integer",
-                    "description": "Max download bandwidth in Mbps."
-                },
-                "obfs": {
-                    "type": "string",
-                    "description": "Obfuscated password."
-                },
-                "users": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "name": {
-                                "type": "string"
-                            },
-                            "auth": {
-                                "type": "string",
-                                "description": "Authentication password, in base64."
-                            },
-                            "auth_str": {
-                                "type": "string",
-                                "description": "Authentication password."
-                            }
-                        }
-                    },
-                    "description": "Hysteria users."
-                },
-                "recv_window_conn": {
-                    "type": "integer",
-                    "description": "The QUIC stream-level flow control window for receiving data.\n\n`15728640 (15 MB/s)` will be used if empty."
-                },
-                "recv_window_client": {
-                    "type": "integer",
-                    "description": "The QUIC connection-level flow control window for receiving data.\n\n`67108864 (64 MB/s)` will be used if empty."
-                },
-                "max_conn_client": {
-                    "type": "integer",
-                    "description": "The maximum number of QUIC concurrent bidirectional streams that a peer is allowed to open.\n\n`1024` will be used if empty."
-                },
-                "disable_mtu_discovery": {
-                    "type": "boolean",
-                    "description": "Disables Path MTU Discovery (RFC 8899)."
-                },
-                "tls": {
-                    "$ref": "../shared/tls-inbound.schema.json"
-                }
-            },
-            "required": ["type", "tls"]
-        },
-        {
-            "$ref": "../shared/listen.schema.json"
-        }
-    ]
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://artiga033.github.io/sing-box-schema/inbound/hysteria.schema.json",
+	"allOf": [
+		{
+			"properties": {
+				"type": {
+					"const": "hysteria"
+				},
+				"tag": {
+					"type": "string",
+					"description": "The tag of the inbound."
+				},
+				"up": {
+					"type": "string",
+					"description": "Max upload bandwidth.\n\nFormat: `[Integer] [Unit]` e.g. `100 Mbps, 640 KBps, 2 Gbps`"
+				},
+				"up_mbps": {
+					"type": "integer",
+					"description": "Max upload bandwidth in Mbps."
+				},
+				"down": {
+					"type": "string",
+					"description": "Max download bandwidth.\n\nFormat: `[Integer] [Unit]` e.g. `100 Mbps, 640 KBps, 2 Gbps`"
+				},
+				"down_mbps": {
+					"type": "integer",
+					"description": "Max download bandwidth in Mbps."
+				},
+				"obfs": {
+					"type": "string",
+					"description": "Obfuscated password."
+				},
+				"users": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"auth": {
+								"type": "string",
+								"description": "Authentication password, in base64."
+							},
+							"auth_str": {
+								"type": "string",
+								"description": "Authentication password."
+							}
+						}
+					},
+					"description": "Hysteria users."
+				},
+				"recv_window_conn": {
+					"type": "integer",
+					"description": "The QUIC stream-level flow control window for receiving data.\n\n`15728640 (15 MB/s)` will be used if empty."
+				},
+				"recv_window_client": {
+					"type": "integer",
+					"description": "The QUIC connection-level flow control window for receiving data.\n\n`67108864 (64 MB/s)` will be used if empty."
+				},
+				"max_conn_client": {
+					"type": "integer",
+					"description": "The maximum number of QUIC concurrent bidirectional streams that a peer is allowed to open.\n\n`1024` will be used if empty."
+				},
+				"disable_mtu_discovery": {
+					"type": "boolean",
+					"description": "Disables Path MTU Discovery (RFC 8899)."
+				},
+				"tls": {
+					"$ref": "../shared/tls-inbound.schema.json"
+				}
+			},
+			"required": ["type", "tls"]
+		},
+		{
+			"$ref": "../shared/listen.schema.json"
+		}
+	]
 }

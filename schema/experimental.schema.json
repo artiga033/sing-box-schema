@@ -1,17 +1,19 @@
 {
-    "type": "object",
-    "properties": {
-        "cache_file": {
-            "$ref": "./experimental/cache-file.schema.json",
-            "description": "🆕 Since sing-box 1.8.0\n\nCache file settings."
-        },
-        "clash_api": {
-            "$ref": "./experimental/clash-api.schema.json",
-            "description": "Clash API settings."
-        },
-        "v2ray_api": {
-            "$ref": "./experimental/v2ray-api.schema.json",
-            "description": "V2Ray API settings."
-        }
-    }
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://artiga033.github.io/sing-box-schema/experimental.schema.json",
+	"type": "object",
+	"properties": {
+		"cache_file": {
+			"$ref": "./experimental/cache-file.schema.json",
+			"description": "🆕 Since sing-box 1.8.0\n\nCache file settings."
+		},
+		"clash_api": {
+			"$ref": "./experimental/clash-api.schema.json",
+			"description": "Clash API settings."
+		},
+		"v2ray_api": {
+			"$ref": "./experimental/v2ray-api.schema.json",
+			"description": "V2Ray API settings."
+		}
+	}
 }

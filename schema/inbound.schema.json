@@ -1,59 +1,94 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "type": "object",
-    "allOf": [
-        {
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "description": "The type of the inbound.",
-                    "enum": [
-                        "direct",
-                        "mixed",
-                        "socks",
-                        "http",
-                        "shadowsocks",
-                        "vmess",
-                        "trojan",
-                        "naive",
-                        "hysteria",
-                        "shadowtls",
-                        "tuic",
-                        "hysteria2",
-                        "vless",
-                        "anytls",
-                        "tun",
-                        "redirect",
-                        "tproxy"
-                    ]
-                },
-                "tag": {
-                    "type": "string",
-                    "description": "The tag of the inbound."
-                }
-            },
-            "required": ["type"]
-        },
-        {
-            "oneOf": [
-                { "$ref": "./inbound/direct.schema.json" },
-                { "$ref": "./inbound/mixed.schema.json" },
-                { "$ref": "./inbound/socks.schema.json" },
-                { "$ref": "./inbound/http.schema.json" },
-                { "$ref": "./inbound/shadowsocks.schema.json" },
-                { "$ref": "./inbound/vmess.schema.json" },
-                { "$ref": "./inbound/trojan.schema.json" },
-                { "$ref": "./inbound/naive.schema.json" },
-                { "$ref": "./inbound/hysteria.schema.json" },
-                { "$ref": "./inbound/shadowtls.schema.json" },
-                { "$ref": "./inbound/tuic.schema.json" },
-                { "$ref": "./inbound/hysteria2.schema.json" },
-                { "$ref": "./inbound/vless.schema.json" },
-                { "$ref": "./inbound/anytls.schema.json" },
-                { "$ref": "./inbound/tun.schema.json" },
-                { "$ref": "./inbound/redirect.schema.json" },
-                { "$ref": "./inbound/tproxy.schema.json" }
-            ]
-        }
-    ]
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://artiga033.github.io/sing-box-schema/inbound.schema.json",
+	"type": "object",
+	"allOf": [
+		{
+			"properties": {
+				"type": {
+					"type": "string",
+					"description": "The type of the inbound.",
+					"enum": [
+						"direct",
+						"mixed",
+						"socks",
+						"http",
+						"shadowsocks",
+						"vmess",
+						"trojan",
+						"naive",
+						"hysteria",
+						"shadowtls",
+						"tuic",
+						"hysteria2",
+						"vless",
+						"anytls",
+						"tun",
+						"redirect",
+						"tproxy"
+					]
+				},
+				"tag": {
+					"type": "string",
+					"description": "The tag of the inbound."
+				}
+			},
+			"required": ["type"]
+		},
+		{
+			"oneOf": [
+				{
+					"$ref": "./inbound/direct.schema.json"
+				},
+				{
+					"$ref": "./inbound/mixed.schema.json"
+				},
+				{
+					"$ref": "./inbound/socks.schema.json"
+				},
+				{
+					"$ref": "./inbound/http.schema.json"
+				},
+				{
+					"$ref": "./inbound/shadowsocks.schema.json"
+				},
+				{
+					"$ref": "./inbound/vmess.schema.json"
+				},
+				{
+					"$ref": "./inbound/trojan.schema.json"
+				},
+				{
+					"$ref": "./inbound/naive.schema.json"
+				},
+				{
+					"$ref": "./inbound/hysteria.schema.json"
+				},
+				{
+					"$ref": "./inbound/shadowtls.schema.json"
+				},
+				{
+					"$ref": "./inbound/tuic.schema.json"
+				},
+				{
+					"$ref": "./inbound/hysteria2.schema.json"
+				},
+				{
+					"$ref": "./inbound/vless.schema.json"
+				},
+				{
+					"$ref": "./inbound/anytls.schema.json"
+				},
+				{
+					"$ref": "./inbound/tun.schema.json"
+				},
+				{
+					"$ref": "./inbound/redirect.schema.json"
+				},
+				{
+					"$ref": "./inbound/tproxy.schema.json"
+				}
+			]
+		}
+	]
 }

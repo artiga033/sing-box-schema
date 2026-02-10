@@ -1,48 +1,50 @@
 {
-    "allOf": [
-        {
-            "properties": {
-                "type": {
-                    "const": "socks"
-                },
-                "tag": {
-                    "type": "string",
-                    "description": "The tag of the outbound."
-                },
-                "server": {
-                    "type": "string",
-                    "description": "The server address."
-                },
-                "server_port": {
-                    "type": "integer",
-                    "description": "The server port."
-                },
-                "version": {
-                    "type": "string",
-                    "enum": ["4", "4a", "5"],
-                    "description": "The SOCKS version, one of `4` `4a` `5`.\n\nSOCKS5 used by default."
-                },
-                "username": {
-                    "type": "string",
-                    "description": "SOCKS username."
-                },
-                "password": {
-                    "type": "string",
-                    "description": "SOCKS5 password."
-                },
-                "network": {
-                    "type": "string",
-                    "enum": ["tcp", "udp"],
-                    "description": "Enabled network.\n\nOne of `tcp` `udp`.\n\nBoth is enabled by default."
-                },
-                "udp_over_tcp": {
-                    "$ref": "../shared/udp-over-tcp.schema.json"
-                }
-            },
-            "required": ["type", "server", "server_port"]
-        },
-        {
-            "$ref": "../shared/dial.schema.json"
-        }
-    ]
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://artiga033.github.io/sing-box-schema/outbound/socks.schema.json",
+	"allOf": [
+		{
+			"properties": {
+				"type": {
+					"const": "socks"
+				},
+				"tag": {
+					"type": "string",
+					"description": "The tag of the outbound."
+				},
+				"server": {
+					"type": "string",
+					"description": "The server address."
+				},
+				"server_port": {
+					"type": "integer",
+					"description": "The server port."
+				},
+				"version": {
+					"type": "string",
+					"enum": ["4", "4a", "5"],
+					"description": "The SOCKS version, one of `4` `4a` `5`.\n\nSOCKS5 used by default."
+				},
+				"username": {
+					"type": "string",
+					"description": "SOCKS username."
+				},
+				"password": {
+					"type": "string",
+					"description": "SOCKS5 password."
+				},
+				"network": {
+					"type": "string",
+					"enum": ["tcp", "udp"],
+					"description": "Enabled network.\n\nOne of `tcp` `udp`.\n\nBoth is enabled by default."
+				},
+				"udp_over_tcp": {
+					"$ref": "../shared/udp-over-tcp.schema.json"
+				}
+			},
+			"required": ["type", "server", "server_port"]
+		},
+		{
+			"$ref": "../shared/dial.schema.json"
+		}
+	]
 }

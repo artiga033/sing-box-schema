@@ -1,40 +1,42 @@
 {
-    "type": "object",
-    "properties": {
-        "listen": {
-            "type": "string",
-            "description": "gRPC API listening address. V2Ray API will be disabled if empty."
-        },
-        "stats": {
-            "type": "object",
-            "properties": {
-                "enabled": {
-                    "type": "boolean",
-                    "description": "Enable statistics service."
-                },
-                "inbounds": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "Inbound list to count traffic."
-                },
-                "outbounds": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "Outbound list to count traffic."
-                },
-                "users": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "User list to count traffic."
-                }
-            },
-            "description": "Traffic statistics service settings."
-        }
-    }
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://artiga033.github.io/sing-box-schema/experimental/v2ray-api.schema.json",
+	"type": "object",
+	"properties": {
+		"listen": {
+			"type": "string",
+			"description": "gRPC API listening address. V2Ray API will be disabled if empty."
+		},
+		"stats": {
+			"type": "object",
+			"properties": {
+				"enabled": {
+					"type": "boolean",
+					"description": "Enable statistics service."
+				},
+				"inbounds": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"description": "Inbound list to count traffic."
+				},
+				"outbounds": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"description": "Outbound list to count traffic."
+				},
+				"users": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"description": "User list to count traffic."
+				}
+			},
+			"description": "Traffic statistics service settings."
+		}
+	}
 }

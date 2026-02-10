@@ -1,19 +1,21 @@
 {
-    "allOf": [
-        {
-            "properties": {
-                "type": {
-                    "const": "resolved"
-                },
-                "tag": {
-                    "type": "string",
-                    "description": "The tag of the service."
-                }
-            },
-            "required": ["type"]
-        },
-        {
-            "$ref": "../shared/listen.schema.json"
-        }
-    ]
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://artiga033.github.io/sing-box-schema/service/resolved.schema.json",
+	"allOf": [
+		{
+			"properties": {
+				"type": {
+					"const": "resolved"
+				},
+				"tag": {
+					"type": "string",
+					"description": "The tag of the service."
+				}
+			},
+			"required": ["type"]
+		},
+		{
+			"$ref": "../shared/listen.schema.json"
+		}
+	]
 }

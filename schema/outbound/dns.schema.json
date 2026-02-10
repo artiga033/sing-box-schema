@@ -1,13 +1,15 @@
 {
-    "properties": {
-        "type": {
-            "const": "dns"
-        },
-        "tag": {
-            "type": "string",
-            "description": "The tag of the outbound."
-        }
-    },
-    "deprecated": true,
-    "required": ["type"]
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://artiga033.github.io/sing-box-schema/outbound/dns.schema.json",
+	"properties": {
+		"type": {
+			"const": "dns"
+		},
+		"tag": {
+			"type": "string",
+			"description": "The tag of the outbound."
+		}
+	},
+	"deprecated": true,
+	"required": ["type"]
 }

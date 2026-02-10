@@ -1,83 +1,85 @@
 {
-    "properties": {
-        "detour": {
-            "type": "string",
-            "description": "The tag of the upstream outbound.\n\nIf enabled, all other fields will be ignored."
-        },
-        "bind_interface": {
-            "type": "string",
-            "description": "The network interface to bind to."
-        },
-        "inet4_bind_address": {
-            "type": "string",
-            "description": "The IPv4 address to bind to."
-        },
-        "inet6_bind_address": {
-            "type": "string",
-            "description": "The IPv6 address to bind to."
-        },
-        "routing_mark": {
-            "description": "Set netfilter routing mark.\n\nIntegers (e.g. `1234`) and string hexadecimals (e.g. `\"0x1234\"`) are supported.",
-            "oneOf": [
-                {
-                    "type": "integer",
-                    "minimum": 0,
-                    "maximum": 4294967295
-                },
-                {
-                    "type": "string",
-                    "pattern": "0x[0-9a-fA-F]+"
-                }
-            ]
-        },
-        "reuse_addr": {
-            "type": "boolean",
-            "description": "Reuse listener address."
-        },
-        "netns": {
-            "type": "string",
-            "description": "> Only supported on Linux.\n\nSet network namespace, name or path."
-        },
-        "connect_timeout": {
-            "type": "string",
-            "description": "Connect timeout, in golang's Duration format.\n\nA duration string is a possibly signed sequence of\ndecimal numbers, each with optional fraction and a unit suffix,\nsuch as \"300ms\", \"-1.5h\" or \"2h45m\".\nValid time units are \"ns\", \"us\" (or \"µs\"), \"ms\", \"s\", \"m\", \"h\"."
-        },
-        "tcp_fast_open": {
-            "type": "boolean",
-            "description": "Enable TCP Fast Open."
-        },
-        "tcp_multi_path": {
-            "type": "boolean",
-            "description": "Enable TCP Multi Path."
-        },
-        "udp_fragment": {
-            "type": "boolean",
-            "description": "Enable UDP fragmentation."
-        },
-        "domain_resolver": {
-            "type": "string",
-            "description": "Set domain resolver to use for resolving domain names.\n\nThis option uses the same format as the [route DNS rule action](/configuration/dns/rule_action/#route) without the `action` field.\n\nSetting this option directly to a string is equivalent to setting `server` of this options.\n\n| Outbound/Endpoints | Effected domains         |\n|--------------------|--------------------------|\n| `direct`           | Domain in request        | \n| others             | Domain in server address |"
-        },
-        "network_strategy": {
-            "type": "string",
-            "description": "Strategy for selecting network interfaces.\n\nAvailable values:\n\n- `default` (default): Connect to default network or networks specified in `network_type` sequentially.\n- `hybrid`: Connect to all networks or networks specified in `network_type` concurrently.\n- `fallback`: Connect to default network or preferred networks specified in `network_type` concurrently, and try fallback networks when unavailable or timeout.\n\nFor fallback, when preferred interfaces fails or times out,\nit will enter a 15s fast fallback state (Connect to all preferred and fallback networks concurrently),\nand exit immediately if preferred networks recover.\n\nConflicts with `bind_interface`, `inet4_bind_address` and `inet6_bind_address`."
-        },
-        "network_type": {
-            "$ref": "../types/string-or-array.schema.json",
-            "description": "Network types to use when using `default` or `hybrid` network strategy or\npreferred network types to use when using `fallback` network strategy.\n\nAvailable values: `wifi`, `cellular`, `ethernet`, `other`.\n\nDevice's default network is used by default."
-        },
-        "fallback_network_type": {
-            "$ref": "../types/string-or-array.schema.json",
-            "description": "Fallback network types when preferred networks are unavailable or timeout when using `fallback` network strategy.\n\nAll other networks expect preferred are used by default."
-        },
-        "fallback_delay": {
-            "type": "string",
-            "description": "The length of time to wait before spawning a RFC 6555 Fast Fallback connection.\n\nFor `domain_strategy`, is the amount of time to wait for connection to succeed before assuming\nthat IPv4/IPv6 is misconfigured and falling back to other type of addresses.\n\nFor `network_strategy`, is the amount of time to wait for connection to succeed before falling\nback to other interfaces.\n\nOnly take effect when `domain_strategy` or `network_strategy` is set.\n\n`300ms` is used by default."
-        },
-        "domain_strategy": {
-            "type": "string",
-            "deprecated": true,
-            "description": "Available values: `prefer_ipv4`, `prefer_ipv6`, `ipv4_only`, `ipv6_only`.\n\nIf set, the requested domain name will be resolved to IP before connect.\n\n| Outbound | Effected domains         | Fallback Value                            |\n|----------|--------------------------|-------------------------------------------|\n| `direct` | Domain in request        | Take `inbound.domain_strategy` if not set | \n| others   | Domain in server address | /                                         |\n"
-        }
-    }
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://artiga033.github.io/sing-box-schema/shared/dial.schema.json",
+	"properties": {
+		"detour": {
+			"type": "string",
+			"description": "The tag of the upstream outbound.\n\nIf enabled, all other fields will be ignored."
+		},
+		"bind_interface": {
+			"type": "string",
+			"description": "The network interface to bind to."
+		},
+		"inet4_bind_address": {
+			"type": "string",
+			"description": "The IPv4 address to bind to."
+		},
+		"inet6_bind_address": {
+			"type": "string",
+			"description": "The IPv6 address to bind to."
+		},
+		"routing_mark": {
+			"description": "Set netfilter routing mark.\n\nIntegers (e.g. `1234`) and string hexadecimals (e.g. `\"0x1234\"`) are supported.",
+			"oneOf": [
+				{
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 4294967295
+				},
+				{
+					"type": "string",
+					"pattern": "0x[0-9a-fA-F]+"
+				}
+			]
+		},
+		"reuse_addr": {
+			"type": "boolean",
+			"description": "Reuse listener address."
+		},
+		"netns": {
+			"type": "string",
+			"description": "> Only supported on Linux.\n\nSet network namespace, name or path."
+		},
+		"connect_timeout": {
+			"type": "string",
+			"description": "Connect timeout, in golang's Duration format.\n\nA duration string is a possibly signed sequence of\ndecimal numbers, each with optional fraction and a unit suffix,\nsuch as \"300ms\", \"-1.5h\" or \"2h45m\".\nValid time units are \"ns\", \"us\" (or \"µs\"), \"ms\", \"s\", \"m\", \"h\"."
+		},
+		"tcp_fast_open": {
+			"type": "boolean",
+			"description": "Enable TCP Fast Open."
+		},
+		"tcp_multi_path": {
+			"type": "boolean",
+			"description": "Enable TCP Multi Path."
+		},
+		"udp_fragment": {
+			"type": "boolean",
+			"description": "Enable UDP fragmentation."
+		},
+		"domain_resolver": {
+			"type": "string",
+			"description": "Set domain resolver to use for resolving domain names.\n\nThis option uses the same format as the [route DNS rule action](/configuration/dns/rule_action/#route) without the `action` field.\n\nSetting this option directly to a string is equivalent to setting `server` of this options.\n\n| Outbound/Endpoints | Effected domains         |\n|--------------------|--------------------------|\n| `direct`           | Domain in request        | \n| others             | Domain in server address |"
+		},
+		"network_strategy": {
+			"type": "string",
+			"description": "Strategy for selecting network interfaces.\n\nAvailable values:\n\n- `default` (default): Connect to default network or networks specified in `network_type` sequentially.\n- `hybrid`: Connect to all networks or networks specified in `network_type` concurrently.\n- `fallback`: Connect to default network or preferred networks specified in `network_type` concurrently, and try fallback networks when unavailable or timeout.\n\nFor fallback, when preferred interfaces fails or times out,\nit will enter a 15s fast fallback state (Connect to all preferred and fallback networks concurrently),\nand exit immediately if preferred networks recover.\n\nConflicts with `bind_interface`, `inet4_bind_address` and `inet6_bind_address`."
+		},
+		"network_type": {
+			"$ref": "../types/string-or-array.schema.json",
+			"description": "Network types to use when using `default` or `hybrid` network strategy or\npreferred network types to use when using `fallback` network strategy.\n\nAvailable values: `wifi`, `cellular`, `ethernet`, `other`.\n\nDevice's default network is used by default."
+		},
+		"fallback_network_type": {
+			"$ref": "../types/string-or-array.schema.json",
+			"description": "Fallback network types when preferred networks are unavailable or timeout when using `fallback` network strategy.\n\nAll other networks expect preferred are used by default."
+		},
+		"fallback_delay": {
+			"type": "string",
+			"description": "The length of time to wait before spawning a RFC 6555 Fast Fallback connection.\n\nFor `domain_strategy`, is the amount of time to wait for connection to succeed before assuming\nthat IPv4/IPv6 is misconfigured and falling back to other type of addresses.\n\nFor `network_strategy`, is the amount of time to wait for connection to succeed before falling\nback to other interfaces.\n\nOnly take effect when `domain_strategy` or `network_strategy` is set.\n\n`300ms` is used by default."
+		},
+		"domain_strategy": {
+			"type": "string",
+			"deprecated": true,
+			"description": "Available values: `prefer_ipv4`, `prefer_ipv6`, `ipv4_only`, `ipv6_only`.\n\nIf set, the requested domain name will be resolved to IP before connect.\n\n| Outbound | Effected domains         | Fallback Value                            |\n|----------|--------------------------|-------------------------------------------|\n| `direct` | Domain in request        | Take `inbound.domain_strategy` if not set | \n| others   | Domain in server address | /                                         |\n"
+		}
+	}
 }

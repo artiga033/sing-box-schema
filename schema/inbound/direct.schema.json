@@ -1,32 +1,34 @@
 {
-    "allOf": [
-        {
-            "properties": {
-                "type": {
-                    "const": "direct"
-                },
-                "tag": {
-                    "type": "string",
-                    "description": "The tag of the inbound."
-                },
-                "network": {
-                    "type": "string",
-                    "enum": ["tcp", "udp"],
-                    "description": "Listen network, one of `tcp` `udp`.\n\nBoth if empty."
-                },
-                "override_address": {
-                    "type": "string",
-                    "description": "Override the connection destination address."
-                },
-                "override_port": {
-                    "type": "integer",
-                    "description": "Override the connection destination port."
-                }
-            },
-            "required": ["type"]
-        },
-        {
-            "$ref": "../shared/listen.schema.json"
-        }
-    ]
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://artiga033.github.io/sing-box-schema/inbound/direct.schema.json",
+	"allOf": [
+		{
+			"properties": {
+				"type": {
+					"const": "direct"
+				},
+				"tag": {
+					"type": "string",
+					"description": "The tag of the inbound."
+				},
+				"network": {
+					"type": "string",
+					"enum": ["tcp", "udp"],
+					"description": "Listen network, one of `tcp` `udp`.\n\nBoth if empty."
+				},
+				"override_address": {
+					"type": "string",
+					"description": "Override the connection destination address."
+				},
+				"override_port": {
+					"type": "integer",
+					"description": "Override the connection destination port."
+				}
+			},
+			"required": ["type"]
+		},
+		{
+			"$ref": "../shared/listen.schema.json"
+		}
+	]
 }
