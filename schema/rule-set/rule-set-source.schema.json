@@ -1,0 +1,27 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://artiga033.github.io/sing-box-schema/rule-set/rule-set-source.schema.json",
+    "title": "sing-box Rule-Set Source Format",
+    "properties": {
+        "version": {
+            "enum": [
+                1,
+                2,
+                3,
+                4
+            ],
+            "description": "Version of rule-set.\n\n1: sing-box 1.8.0: Initial rule-set version.\n2: sing-box 1.10.0: Optimized memory usages of domain_suffix rules in binary rule-sets.\n3: sing-box 1.11.0: Added network_type, network_is_expensive and network_is_constrainted rule items.\n4: sing-box 1.13.0: Added network_interface_address and default_interface_address rule items"
+        },
+        "rules": {
+            "type": "array",
+            "items": {
+                "$ref": "./headless-rule.schema.json"
+            },
+            "description": "List of Headless Rule"
+        }
+    },
+    "required": [
+        "version",
+        "rules"
+    ]
+}
